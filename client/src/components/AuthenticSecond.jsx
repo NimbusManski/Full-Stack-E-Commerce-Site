@@ -4,8 +4,8 @@ export default function AuthenticSecond() {
       <div className="auth-section-text">
         <h2>Authentic Quality</h2>
         <p>
-          WatchBox is home to the greatest collection of pre-owned luxury
-          watches, all certified as authentic and Collector Quality.
+          Mens Luxury is home to the greatest collection of pre-owned luxury
+          watches, shoes, ties and belts, all certified as authentic and Collector Quality.
         </p>
         <button>Shop Now</button>
       </div>
