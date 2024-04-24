@@ -1,0 +1,288 @@
+body {
+  background-color: white;
+}
+/* Hero */
+.hero {
+  background: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.5)), url('../public/images/rolex.jpg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100vw; 
+  height: 100vh; 
+}
+
+.hero h1, .hero, .lead {
+  color: white;
+}
+
+.hero h1 {
+  font-size: 6rem;
+  text-shadow: 2px 2px 4px#8C7758;
+}
+
+.hero-col-custom {
+  padding-bottom: 200px; 
+}
+
+.lead {
+  font-size: 29px;
+  text-shadow: 2px 2px 4px#8C7758;
+  /* border-bottom: 1px solid white; */
+}
+
+.btn-custom {
+  width: 150px;
+  height: 45px;
+  background-color: #8C7758;
+  color: white;
+  
+}
+
+.header-section {
+}
+
+
+/* Navigation */
+.navbar-custom {
+  padding: 18px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  background-color: black;
+  color: white !important;
+}
+
+.navbar-custom {
+  background-color: rgb(16, 16, 16) !important;
+}
+
+.nav-link,
+.navbar-brand {
+  color: white !important;
+  
+}
+
+.navbar-toggler-icon {
+  background-color: rgb(0, 0, 0) !important;
+  border-radius: 10%;
+}
+
+/* Shop Section */
+.shop-header {
+  color: black;
+  padding: 20px;
+  margin: 20px;
+}
+
+/* Authentic Section */
+.auth-section {
+  display: flex;
+  color: white;
+}
+
+.auth-section-img {
+  width: 100%;
+  height: 100%;
+}
+
+.auth-section-text {
+  width: 100%;
+  background-color: rgb(20, 20, 20);
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.auth-section button {
+  width: 150px;
+  height:40px;
+}
+
+.auth-section button:hover {
+  background-color: #a48c67;
+  color: white;
+}
+
+.auth-section-img img{
+  width: 100%;
+  height: 100%;
+}
+
+/* Attributes Section */
+.attr-container {
+  margin: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.attr-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+}
+
+.attribute-1,
+.attribute-2,
+.attribute-3 {
+  display: flex;
+  flex-direction: column;
+  width: 30%; 
+  margin: 0 10px; 
+  border-left: 1px solid #8C7758 !important;
+  padding-left: 30px;
+}
+
+.button-container {
+  margin-top: 60px; 
+}
+
+.button-container button {
+  width: 200px;
+  height: 45px;
+  background-color: #8C7758;
+  color: white;
+}
+
+/* Footer */
+.footer-header {
+  text-align: center;
+  margin: 0 0 30px;
+  color: white;
+}
+
+.footer-row {
+  pointer-events: none;
+}
+
+.footer-link{
+  color: white;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+  pointer-events: auto;
+}
+
+/* Login */ 
+.login-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+.login-form {
+border: 0.1px solid black;
+height: 60%;
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.login-form h1 {
+ padding-bottom: 20px;;
+}
+
+.input {
+  width: 95%
+}
+
+.login-form button {
+  width: 95%;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px;
+}
+
+.login-form a {
+  text-decoration: none;
+  color: white;
+}
+
+.login-form p {
+  margin: 10px;
+}
+
+.login-form p a {
+  color: black;
+  text-decoration: underline;
+}
+
+.login-form p a:hover {
+  font-weight: 500;
+}
+
+/* Register */
+.register-form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+}
+
+.register-form {
+border: 0.1px solid black;
+height: 60%;
+width: 50%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.register-form h1 {
+ padding-bottom: 20px;;
+}
+
+.input {
+  width: 95%
+}
+
+.register-form button {
+  width: 95%;
+  color: white;
+  background-color: black;
+  border: none;
+  padding: 10px;
+}
+
+.register-form a {
+  text-decoration: none;
+  color: white;
+}
+
+.register-form p {
+  margin: 10px;
+}
+
+.register-form p a {
+  color: black;
+  text-decoration: underline;
+}
+
+.register-form p a:hover {
+  font-weight: 500;
+}
+
+.checkbox {
+  padding-top: 7px;
+}
+
+
+
+
+
+
+
