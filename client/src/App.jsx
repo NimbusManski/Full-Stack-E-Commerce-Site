@@ -12,7 +12,6 @@ function App() {
  
 
   return (
-    <UserContextProvider>
       <BrowserRouter>
        <Routes>
         <Route path='/' element={<Layout />} />
@@ -20,7 +19,6 @@ function App() {
         <Route path='/register' element={<Register />} />
        </Routes>
     </BrowserRouter>
-    </UserContextProvider>
   )
 }
 

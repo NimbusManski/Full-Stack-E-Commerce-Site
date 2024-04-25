@@ -1,21 +1,32 @@
-import { useState, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Form, FormCheck } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import{ UserContext} from "../components/UserContext";
 
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
-  const [userInfo, setUserInfo] = useState({});
+  const { setUserInfo } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const navigate = useNavigate();
+
   async function login(e) {
     e.preventDefault();
-    try { const response = await fetch(`${REACT_APP_SERVER_URL}/login`, {
+    try { const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/login`, {
         method: "POST",
-        body: JSON.stringify(username, password),
-        headers: "Content-Type: application/json",
+        body: JSON.stringify({username, password}),
+        headers: { "Content-Type" : "application/json"},
         credentials: "include"
         })
+        
+        response.json().then(userInfo => {
+          setUserInfo(userInfo)
+        });
+
+        if(response.status === 200) {
+          navigate("/");
+        }
 
     } catch(err) {
         console.log(err);
@@ -29,7 +40,7 @@ export default function Login() {
         <h1>Sign In</h1>
         <Form.Group className="mb-3 input" controlId="formGroupEmail">
           <Form.Label>Username</Form.Label>
-          <Form.Control type="email" placeholder="Username" value={username}/>
+          <Form.Control type="text" placeholder="Username" value={username} onChange={(e) => {setUsername(e.target.value)}}/>
         </Form.Group>
         <Form.Group className="mb-3 input" controlId="formGroupPassword">
           <Form.Label>Password</Form.Label>
@@ -37,6 +48,7 @@ export default function Login() {
             type={showPassword ? "text" : "password"}
             value={password}
             placeholder="Password"
+            onChange={(e) => {setPassword(e.target.value)}}
           />
           <FormCheck
             className="checkbox"
