@@ -51,10 +51,18 @@ body {
   z-index: 9999;
   background-color: black;
   color: white !important;
+  transition:  0.32s ease-in-out;
 }
 
-.navbar-custom {
-  background-color: rgb(16, 16, 16) !important;
+.scrolled {
+  padding: 18px 0;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 9999;
+  background-color: rgba(0,0,0, 0.6);
+  color: white !important;
+  transition:  0.32s ease-in-out;
 }
 
 .nav-link,
@@ -279,6 +287,70 @@ align-items: center;
 .checkbox {
   padding-top: 7px;
 }
+
+/* Watches Page */
+.watch-page-hero {
+  background:  url('../public/images/watches/all-watches.avif');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100vw; 
+  height: 70vh; 
+}
+
+.watch-page-hero h1 {
+  color: black;
+  text-decoration: underline;
+  margin: 30px;
+}
+.watch-page-hero-col-custom {
+   
+}
+
+.watch-page-hero p {
+  color: black;
+}
+
+.row-custom {
+  height: 70vh ;
+}
+
+.watch-section {
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('../public/images/watches/section-img.jpeg');  background-size: cover;
+  background-position: center;
+  height: 400px; 
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  color: white;
+}
+
+.watch-section-overlay {
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.watch-section h2 {
+  font-size: 50px;
+  margin: 0;
+  color: white;
+  font-family: "Roboto", sans-serif;
+}
+
+.watch-section p {
+  font-size: 30px;
+  margin: 0;
+  color: white;
+  font-family: "Roboto", sans-serif; 
+}
+
+
+
+
+
 
 
 

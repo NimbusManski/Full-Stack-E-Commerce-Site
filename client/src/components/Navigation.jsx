@@ -5,8 +5,22 @@ import { UserContext } from "./UserContext";
 
 export default function Navigation() {
   const { userInfo, setUserInfo } = useContext(UserContext);
-
+  const [scrolled, setScrolled] = useState(false);
   const navigate = useNavigate();
+  
+  useEffect(() => {
+    const onScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolled(true);
+      } else {
+        setScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
+  });
 
   useEffect(() => {
     async function fetchUserData() {
@@ -33,25 +47,24 @@ export default function Navigation() {
     fetchUserData();
   }, [setUserInfo]);
 
-   function logout() {
+  function logout() {
     try {
-     fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
+      fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
         method: "POST",
-        credentials: "include"
+        credentials: "include",
       });
 
       setUserInfo({});
       navigate("/login");
-
     } catch (err) {
       console.log(err);
     }
   }
 
   return (
-    <Navbar expand="lg" className="navbar-custom">
+    <Navbar expand="lg" className={scrolled ? "scrolled" : "navbar-custom"}>
       <Container>
-        <Navbar.Brand href="#home">
+        <Navbar.Brand href="/">
           <img
             src="/images/Logo.jpg"
             alt="Logo"
@@ -65,19 +78,21 @@ export default function Navigation() {
           <Nav className="me-auto mx-auto">
             <Nav.Link href="/all-items">Shop All</Nav.Link>
             <Nav.Link href="/brands">Brands</Nav.Link>
-            <Nav.Link href="/profile">Cart</Nav.Link>
+            <Nav.Link href="/profile">View Cart</Nav.Link>
             <NavDropdown
               title="more"
               id="basic-nav-dropdown"
               className="ms-auto"
             >
-              <NavDropdown.Item href="#action/3.1">Watches</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Ties</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Shoes</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Belts</NavDropdown.Item>
+              <NavDropdown.Item href="/watches">Watches</NavDropdown.Item>
+              <NavDropdown.Item href="/ties">Ties</NavDropdown.Item>
+              <NavDropdown.Item href="/shoes">Shoes</NavDropdown.Item>
+              <NavDropdown.Item href="/belts/3.3">Belts</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/login">Profile</NavDropdown.Item>
-              <NavDropdown.Item href="" onClick={logout}>Logout</NavDropdown.Item>
+              <NavDropdown.Item href="" onClick={logout}>
+                Logout
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

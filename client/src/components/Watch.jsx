@@ -1,6 +1,7 @@
 import { Card } from "react-bootstrap";
 
 
+
 export default function Watch({maker, imageUrl, name, description, price}) {
     return (
         <Card style={{ width: '100%' }}>
