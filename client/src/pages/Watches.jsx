@@ -247,7 +247,7 @@ export default function Watches() {
 
         <section className="items">
           <Container className="text-center">
-            <h1 className="watches-page-header">All Watches</h1>
+            <h1 className="watches-page-header">Watches</h1>
             <p>
               With thousands of pre-owned luxury watches from the best brands
               around the world, we are dedicated to bringing collectors and

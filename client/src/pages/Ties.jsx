@@ -247,7 +247,7 @@ export default function Ties() {
 
         <section className="items">
           <Container className="text-center">
-            <h1 className="ties-page-header">All Ties</h1>
+            <h1 className="ties-page-header">Ties</h1>
             <p>
               Indulge in the epitome of sophistication with our luxury ties
               collection. Crafted with meticulous attention to detail and using

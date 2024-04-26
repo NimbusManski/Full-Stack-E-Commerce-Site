@@ -405,6 +405,59 @@ align-items: center;
   color: white;
 }
 
+/* Shoes Page */
+.shoes-page-hero {
+  background:linear-gradient(rgba(0,0,0, 0.2), rgba(0,0,0, 0.3)),  url('../public/images/shoes/all-shoes.jpeg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100vw; 
+  height: 70vh; 
+}
+
+.shoes-page-hero h1 {
+  color: black;
+  text-decoration: underline;
+  margin: 30px;
+}
+
+.shoes-page-hero p {
+  color: black;
+}
+
+.shoes-row-custom {
+  height: 70vh;
+}
+
+.shoe-section {
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('../public/images/shoes/section-img.jpeg');  background-size: cover;
+  background-position: center;
+  height: 400px; 
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  color: white;
+}
+
+.shoe-section-overlay {
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.shoe-section h2 {
+  font-size: 50px;
+  margin: 0;
+  color: white;
+}
+
+.shoe-section p {
+  font-size: 30px;
+  margin: 0;
+  color: white;
+}
 /* Footer */
 .footer {
   background-color: black;

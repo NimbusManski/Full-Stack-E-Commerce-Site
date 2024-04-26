@@ -10,16 +10,19 @@ export default function Explore() {
           <Link to={"/about-us"} className="explore-link mx-2">About Us</Link>
         </div>
         <div className="explore-link-wrapper">
-          <Link to={"/watches"} className="explore-link mx-2">All Watches</Link>
+          <Link to={"/team"} className="explore-link mx-2">Meet the Team</Link>
         </div>
         <div className="explore-link-wrapper">
-          <Link to={"/shoes"} className="explore-link mx-2">All Shoes</Link>
+          <Link to={"/watches"} className="explore-link mx-2">Watches</Link>
         </div>
         <div className="explore-link-wrapper">
-          <Link to={"/hats"} className="explore-link mx-2">All Hats</Link>
+          <Link to={"/shoes"} className="explore-link mx-2">Shoes</Link>
         </div>
         <div className="explore-link-wrapper">
-          <Link to={"/ties"} className="explore-link mx-2">All Ties</Link>
+          <Link to={"/hats"} className="explore-link mx-2">Hats</Link>
+        </div>
+        <div className="explore-link-wrapper">
+          <Link to={"/ties"} className="explore-link mx-2">Ties</Link>
         </div>
       </Row>
     </Container>
