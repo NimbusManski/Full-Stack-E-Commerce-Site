@@ -1,5 +1,6 @@
 body {
   background-color: white;
+  font-family: "Roboto", sans-serif;
 }
 /* Hero */
 .hero {
@@ -83,6 +84,13 @@ body {
   margin: 20px;
 }
 
+/* Item */
+
+.item {
+  border-radius: 0;
+}
+
+
 /* Authentic Section */
 .auth-section {
   display: flex;
@@ -143,6 +151,7 @@ body {
   margin: 0 10px; 
   border-left: 1px solid #8C7758 !important;
   padding-left: 30px;
+  /* color:white; */
 }
 
 .button-container {
@@ -156,24 +165,24 @@ body {
   color: white;
 }
 
-/* Footer */
-.footer-header {
+/* Explore */
+.explore-header {
   text-align: center;
   margin: 0 0 30px;
   color: white;
 }
 
-.footer-row {
+.explore-row {
   pointer-events: none;
 }
 
-.footer-link{
+.explore-link{
   color: white;
   text-decoration: none;
   pointer-events: auto;
 }
 
-.footer-link:hover {
+.explore-link:hover {
   text-decoration: underline;
   pointer-events: auto;
 }
@@ -289,7 +298,7 @@ align-items: center;
 }
 
 /* Watches Page */
-.watch-page-hero {
+.watches-page-hero {
   background:  url('../public/images/watches/all-watches.avif');
   background-size: cover; 
   background-position: center; 
@@ -298,20 +307,17 @@ align-items: center;
   height: 70vh; 
 }
 
-.watch-page-hero h1 {
+.watches-page-hero h1 {
   color: black;
   text-decoration: underline;
   margin: 30px;
 }
-.watch-page-hero-col-custom {
-   
-}
 
-.watch-page-hero p {
+.watches-page-hero p {
   color: black;
 }
 
-.row-custom {
+.watches-row-custom {
   height: 70vh ;
 }
 
@@ -337,14 +343,75 @@ align-items: center;
   font-size: 50px;
   margin: 0;
   color: white;
-  font-family: "Roboto", sans-serif;
 }
 
 .watch-section p {
   font-size: 30px;
   margin: 0;
   color: white;
-  font-family: "Roboto", sans-serif; 
+}
+
+/* Ties Page */
+.ties-page-hero {
+  background:linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.5)),  url('../public/images/ties/all-ties.jpeg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100vw; 
+  height: 70vh; 
+}
+
+.ties-page-hero h1 {
+  color: black;
+  text-decoration: underline;
+  margin: 30px;
+}
+
+.ties-page-hero p {
+  color: black;
+}
+
+.ties-row-custom {
+  height: 70vh ;
+}
+
+.tie-section {
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('../public/images/ties/section-img.jpeg');  background-size: cover;
+  background-position: center;
+  height: 400px; 
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  color: white;
+}
+
+.tie-section-overlay {
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.tie-section h2 {
+  font-size: 50px;
+  margin: 0;
+  color: white;
+}
+
+.tie-section p {
+  font-size: 30px;
+  margin: 0;
+  color: white;
+}
+
+/* Footer */
+.footer {
+  background-color: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
 }
 
 

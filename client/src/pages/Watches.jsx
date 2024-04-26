@@ -2,6 +2,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import Item from "../components/Item";
 import { Link } from "react-router-dom";
+import Explore from "../components/Explore";
 import Footer from "../components/Footer";
 
 export default function Watches() {
@@ -233,10 +234,10 @@ export default function Watches() {
   return (
     <div className="watches-wrapper">
       <Navigation />
-      <div className="watch-page-hero">
+      <div className="watches-page-hero">
         <Container className="header-section">
-          <Row className="justify-content-center align-items-center row-custom">
-            <Col md={8} className="text-center watch-page-hero-col-custom">
+          <Row className="justify-content-center align-items-center watches-row-custom">
+            <Col md={8} className="text-center watches-page-hero-col-custom">
               <div className="lead-wrapper">
                 <div className="button-wrapper mt-3"></div>
               </div>
@@ -246,7 +247,7 @@ export default function Watches() {
 
         <section className="items">
           <Container className="text-center">
-            <h1 className="watch-page-header">All Watches</h1>
+            <h1 className="watches-page-header">All Watches</h1>
             <p>
               With thousands of pre-owned luxury watches from the best brands
               around the world, we are dedicated to bringing collectors and
@@ -294,6 +295,7 @@ export default function Watches() {
             </Row>
           </Container>
         </section>
+        <Explore />
         <Footer />
       </div>
     </div>

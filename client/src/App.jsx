@@ -3,6 +3,7 @@ import Layout from './Layout';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Watches from './pages/Watches';
+import Ties from './pages/Ties';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/register' element={<Register />} />
         <Route path='/watches' element={<Watches />} />
+        <Route path='/ties' element={<Ties />} />
        </Routes>
     </BrowserRouter>
   )
