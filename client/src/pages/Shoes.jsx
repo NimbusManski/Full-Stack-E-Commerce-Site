@@ -1,6 +1,6 @@
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
-import Item from "../components/Item";
+import Item from "../models/Item";
 import { Link } from "react-router-dom";
 import Explore from "../components/Explore";
 import Footer from "../components/Footer";

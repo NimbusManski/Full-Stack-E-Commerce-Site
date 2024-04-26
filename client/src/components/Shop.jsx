@@ -1,5 +1,5 @@
 import { Container, Row, Col } from "react-bootstrap";
-import Item from "./Item";
+import Item from "../models/Item";
 import { Link } from "react-router-dom";
 
 export default function Shop() {

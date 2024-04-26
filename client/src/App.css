@@ -297,7 +297,7 @@ align-items: center;
   padding-top: 7px;
 }
 
-/* Watches Page */
+/* Watches Page/Watch */
 .watches-page-hero {
   background:  url('../public/images/watches/all-watches.avif');
   background-size: cover; 
@@ -349,6 +349,20 @@ align-items: center;
   font-size: 30px;
   margin: 0;
   color: white;
+}
+
+.watch-link {
+  text-decoration: none;
+}
+
+.watch-description {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  max-height: 4em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
 
 /* Ties Page */
