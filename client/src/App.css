@@ -458,6 +458,61 @@ align-items: center;
   margin: 0;
   color: white;
 }
+
+/* Belts Page */
+.belts-page-hero {
+  background:linear-gradient(rgba(0,0,0, 0.5), rgba(0,0,0, 0.3)),  url('../public/images/belts/all-belts.jpeg');
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  width: 100vw; 
+  height: 70vh; 
+}
+
+.belts-page-hero h1 {
+  color: black;
+  text-decoration: underline;
+  margin: 30px;
+}
+
+.belts-page-hero p {
+  color: black;
+}
+
+.belts-row-custom {
+  height: 70vh;
+}
+
+.belt-section {
+  position: relative;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('../public/images/belts/section-img.jpeg');  background-size: cover;
+  background-position: center;
+  height: 400px; 
+  display: flex;
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  color: white;
+}
+
+.belt-section-overlay {
+  position: absolute;
+  left: 20px; 
+  top: 50%; 
+  transform: translateY(-50%); 
+}
+
+.belt-section h2 {
+  font-size: 50px;
+  margin: 0;
+  color: white;
+}
+
+.belt-section p {
+  font-size: 30px;
+  margin: 0;
+  color: white;
+}
+
 /* Footer */
 .footer {
   background-color: black;

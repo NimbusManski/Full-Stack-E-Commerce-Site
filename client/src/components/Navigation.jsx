@@ -76,8 +76,8 @@ export default function Navigation() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto mx-auto">
-            <Nav.Link href="/all-items">Shop All</Nav.Link>
             <Nav.Link href="/brands">Brands</Nav.Link>
+            <Nav.Link href="/all-items">Shop All</Nav.Link>
             <Nav.Link href="/profile">View Cart</Nav.Link>
             <NavDropdown
               title="more"
@@ -87,7 +87,7 @@ export default function Navigation() {
               <NavDropdown.Item href="/watches">Watches</NavDropdown.Item>
               <NavDropdown.Item href="/ties">Ties</NavDropdown.Item>
               <NavDropdown.Item href="/shoes">Shoes</NavDropdown.Item>
-              <NavDropdown.Item href="/belts/3.3">Belts</NavDropdown.Item>
+              <NavDropdown.Item href="/belts">Belts</NavDropdown.Item>
               <NavDropdown.Divider />
               <NavDropdown.Item href="/login">Profile</NavDropdown.Item>
               <NavDropdown.Item href="" onClick={logout}>
