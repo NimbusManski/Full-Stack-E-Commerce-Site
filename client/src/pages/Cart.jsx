@@ -4,7 +4,7 @@ import Navigation from '../components/Navigation';
 import { UserContext } from '../components/UserContext';
 
 
-function Cart() {
+export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const { userInfo } = useContext(UserContext);
 
@@ -15,10 +15,7 @@ function Cart() {
           `${import.meta.env.VITE_SERVER_URL}/cart-items`,
           {
             method: 'GET',
-            credentials: 'include',
-            headers: {
-              'User-Id': userInfo.id
-            }
+            credentials: 'include'      
           }
         );
 
@@ -59,5 +56,3 @@ function Cart() {
     </div>
   );
 }
-
-export default Cart;

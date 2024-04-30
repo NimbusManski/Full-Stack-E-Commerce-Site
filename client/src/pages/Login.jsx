@@ -29,7 +29,7 @@ export default function Login() {
         }
 
     } catch(err) {
-        console.log(err);
+        console.error("Error logging in:",err);
     }
   }
 

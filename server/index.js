@@ -129,14 +129,13 @@ app.get("/watches", (req, res) => {
     const q = "SELECT * FROM luxury_store.watches ORDER BY watches.id DESC";
 
     db.query(q, (err, data) => {
-      if(err) {
-        res.json({message: "Error fetching watches"})
+      if (err) {
+        res.json({ message: "Error fetching watches" });
       } else {
         return res.json(data);
       }
-      
+
       console.log(data);
-      
     });
   } catch (err) {
     console.log(err);
@@ -144,54 +143,60 @@ app.get("/watches", (req, res) => {
 });
 
 app.get("/watch-details/:id", (req, res) => {
-  const { id } = req.params;
+  try {
+    const { id } = req.params;
 
-  const q = "SELECT * FROM luxury_store.watches WHERE id = ?"
+    const q = "SELECT * FROM luxury_store.watches WHERE id = ?";
 
-  db.query(q, [id], (err, data) => {
-console.log(data);
+    db.query(q, [id], (err, data) => {
+      console.log(data);
 
-    if(err) {
-      console.log(err);
-    }
-    else if(data.length === 0) {
-      res.status(404).json({message: "Watch not found"});
-    } else {
-      return res.json(data[0]);
-    }
-
-  })
-})
+      if (err) {
+        console.log(err);
+      } else if (data.length === 0) {
+        res.status(404).json({ message: "Watch not found" });
+      } else {
+        return res.json(data[0]);
+      }
+    });
+  } catch (err) {
+    console.log(err);
+  }
+});
 
 app.post("/add-to-cart", (req, res) => {
-  const { userId, watchId } = req.body;
+  try {
+    const { userId, watchId } = req.body;
 
-  const q = "INSERT INTO luxury_store.cart (user_id, watch_id) VALUES (?,?) ON DUPLICATE KEY UPDATE watch_id = VALUES(watch_id)"
+    const q =
+      "INSERT INTO luxury_store.cart (user_id, watch_id) VALUES (?,?) ON DUPLICATE KEY UPDATE watch_id = VALUES(watch_id)";
 
-  db.query(q, [userId, watchId], (err, data) => {
-    if(err) {
-      console.log(err);
-      res.status(500).json({ message: "Internal server error" });
-    } else {
-      res.status(200).json({message: "Item added to cart"});
-    }
+    db.query(q, [userId, watchId], (err, data) => {
+      if (err) {
+        console.log(err);
+        res.status(500).json({ message: "Internal server error" });
+      } else {
+        res.status(200).json({ message: "Item added to cart" });
+      }
 
-    console.log(data);
-
-    
-  })
+      console.log(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.get("/cart-items", (req, res) => {
-  const token = req.cookies.token;
+  try {
+    const token = req.cookies.token;
 
-  const decoded = jwt.verify(token, secret);
+    const decoded = jwt.verify(token, secret);
 
-  const userId = decoded.id;
+    const userId = decoded.id;
 
-  console.log(userId);
+    console.log(userId);
 
-  const q = `
+    const q = `
   SELECT
     c.id AS cart_item_id,
     w.id AS watch_id,
@@ -228,16 +233,19 @@ app.get("/cart-items", (req, res) => {
     c.user_id = ?
   `;
 
-  db.query(q, [userId], (err, data) => {
-    if (err) {
-      console.log(err);
-      return res.status(500).json({ message: "Internal server error" });
-    }
+    db.query(q, [userId], (err, data) => {
+      if (err) {
+        console.log(err);
+        return res.status(500).json({ message: "Internal server error" });
+      }
 
-    console.log("Cart items:", data);
+      console.log("Cart items:", data);
 
-    res.status(200).json(data);
-  });
+      res.status(200).json(data);
+    });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.post("/logout", (req, res) => {

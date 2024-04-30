@@ -23,8 +23,8 @@ export default function WatchDetails() {
 
         const watchData = await response.json();
         setWatchData(watchData);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+      } catch (err) {
+        console.error("Error fetching data:", err);
       }
     }
 
@@ -41,8 +41,8 @@ export default function WatchDetails() {
   console.log(userInfo);
 
   function addToCartHandler() {
-    fetch(`${import.meta.env.VITE_SERVER_URL}/add-to-cart`,
-      {
+    try {
+      fetch(`${import.meta.env.VITE_SERVER_URL}/add-to-cart`, {
         method: "POST",
         credentials: "include",
         body: JSON.stringify({ watchId: watchData.id, userId: userInfo.id }),
@@ -54,6 +54,9 @@ export default function WatchDetails() {
 
         console.log("Item added");
       });
+    } catch (err) {
+      console.error("Error adding item:", err);
+    }
   }
 
   return (

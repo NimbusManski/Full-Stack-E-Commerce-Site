@@ -584,17 +584,17 @@ text-decoration: underline;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 20px; /* Adjust margin between items */
+  margin-bottom: 20px; 
 }
 
 .cart-item-image {
-  max-width: 200px; /* Set maximum width for images */
-  height: auto; /* Maintain aspect ratio */
-  margin-bottom: 10px; /* Adjust margin between image and details */
+  max-width: 200px; 
+  height: auto; 
+  margin-bottom: 10px; 
 }
 
 .cart-item-details {
-  text-align: center; /* Center align item details */
+  text-align: center; 
 }
 
 .cart-container-custom {
