@@ -2,9 +2,10 @@ body {
   background-color: white;
   font-family: "Roboto", sans-serif;
 }
+
 /* Hero */
 .hero {
-  background: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.5)), url('../public/images/rolex.jpg');
+  background: linear-gradient(rgba(0,0,0, 0.4), rgba(0,0,0, 0.5)), url('/images/hero.jpeg');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -22,7 +23,7 @@ body {
 }
 
 .hero-col-custom {
-  padding-bottom: 200px; 
+  padding-bottom: 200px;
 }
 
 .lead {
@@ -37,9 +38,6 @@ body {
   background-color: #8C7758;
   color: white;
   
-}
-
-.header-section {
 }
 
 
@@ -299,7 +297,7 @@ align-items: center;
 
 /* Watches Page/Watch */
 .watches-page-hero {
-  background:  url('../public/images/watches/all-watches.avif');
+  background:  url('/images/watches/all-watches.avif');
   background-size: cover; 
   background-position: center; 
   background-repeat: no-repeat; 
@@ -355,6 +353,10 @@ align-items: center;
   text-decoration: none;
 }
 
+.watch-card-body {
+  height: 200px;
+}
+
 .watch-description {
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -363,6 +365,56 @@ align-items: center;
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 100%;
+}
+
+/* Watch Details Page */
+.watch-details-container-custom {
+  padding: 200px !important;
+}
+
+.watch-details-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.watch-details-info a{
+text-decoration: none;
+padding: 10px;
+}
+.watch-details-info a:hover{
+text-decoration: underline;
+
+}
+
+.carousel-control-prev-icon, .carousel-control-next-icon {
+  filter: brightness(0); 
+}
+
+.carousel-control-prev, .carousel-control-next {
+  width: 7%; 
+  filter: brightness(0.5); 
+}
+
+.carousel-control-prev:hover, .carousel-control-next:hover {
+  filter: brightness(0.8); 
+}
+
+.carousel-indicators li {
+  background-color: rgba(0, 0, 0, 0.817); 
+}
+
+.carousel-indicators .active {
+  background-color: #000000a5; 
+}
+
+.add-to-cart-btn {
+  background-color: grey;
+  border: none;
+  border-radius: 0;
+}
+.add-to-cart-btn:hover {
+  background-color: rgb(150, 150, 150);
+ 
 }
 
 /* Ties Page */
@@ -525,6 +577,28 @@ align-items: center;
   font-size: 30px;
   margin: 0;
   color: white;
+}
+
+/* Cart Page */
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px; /* Adjust margin between items */
+}
+
+.cart-item-image {
+  max-width: 200px; /* Set maximum width for images */
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 10px; /* Adjust margin between image and details */
+}
+
+.cart-item-details {
+  text-align: center; /* Center align item details */
+}
+
+.cart-container-custom {
+  padding-top: 20%;
 }
 
 /* Footer */

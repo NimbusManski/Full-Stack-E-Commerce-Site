@@ -81,7 +81,7 @@ app.post("/login", (req, res) => {
             },
             secret,
             {
-              expiresIn: "1H",
+              expiresIn: "24H",
             },
             (err, token) => {
               if (err) {
@@ -143,8 +143,101 @@ app.get("/watches", (req, res) => {
   }
 });
 
-app.get("/watch:id", (req, res) => {
-  const id = req.params.id;
+app.get("/watch-details/:id", (req, res) => {
+  const { id } = req.params;
+
+  const q = "SELECT * FROM luxury_store.watches WHERE id = ?"
+
+  db.query(q, [id], (err, data) => {
+console.log(data);
+
+    if(err) {
+      console.log(err);
+    }
+    else if(data.length === 0) {
+      res.status(404).json({message: "Watch not found"});
+    } else {
+      return res.json(data[0]);
+    }
+
+  })
+})
+
+app.post("/add-to-cart", (req, res) => {
+  const { userId, watchId } = req.body;
+
+  const q = "INSERT INTO luxury_store.cart (user_id, watch_id) VALUES (?,?) ON DUPLICATE KEY UPDATE watch_id = VALUES(watch_id)"
+
+  db.query(q, [userId, watchId], (err, data) => {
+    if(err) {
+      console.log(err);
+      res.status(500).json({ message: "Internal server error" });
+    } else {
+      res.status(200).json({message: "Item added to cart"});
+    }
+
+    console.log(data);
+
+    
+  })
+});
+
+app.get("/cart-items", (req, res) => {
+  const token = req.cookies.token;
+
+  const decoded = jwt.verify(token, secret);
+
+  const userId = decoded.id;
+
+  console.log(userId);
+
+  const q = `
+  SELECT
+    c.id AS cart_item_id,
+    w.id AS watch_id,
+    w.brand AS watch_brand,
+    w.name AS watch_name,
+    w.description AS watch_description,
+    w.price AS watch_price,
+    w.image1 AS watch_image1,
+    t.id AS tie_id,
+    t.brand AS tie_brand,
+    t.name AS tie_name,
+    t.description AS tie_description,
+    t.price AS tie_price,
+    t.image1 AS tie_image1,
+    s.id AS shoe_id,
+    s.brand AS shoe_brand,
+    s.name AS shoe_name,
+    s.description AS shoe_description,
+    s.price AS shoe_price,
+    s.image1 AS shoe_image1,
+    b.id AS belt_id,
+    b.brand AS belt_brand,
+    b.name AS belt_name,
+    b.description AS belt_description,
+    b.price AS belt_price,
+    b.image1 AS belt_image1
+  FROM
+    luxury_store.cart AS c
+    LEFT JOIN luxury_store.watches AS w ON c.watch_id = w.id
+    LEFT JOIN luxury_store.ties AS t ON c.tie_id = t.id
+    LEFT JOIN luxury_store.shoes AS s ON c.shoe_id = s.id
+    LEFT JOIN luxury_store.belts AS b ON c.belt_id = b.id
+  WHERE
+    c.user_id = ?
+  `;
+
+  db.query(q, [userId], (err, data) => {
+    if (err) {
+      console.log(err);
+      return res.status(500).json({ message: "Internal server error" });
+    }
+
+    console.log("Cart items:", data);
+
+    res.status(200).json(data);
+  });
 });
 
 app.post("/logout", (req, res) => {
