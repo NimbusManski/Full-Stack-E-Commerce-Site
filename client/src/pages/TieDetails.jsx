@@ -4,8 +4,8 @@ import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import { UserContext } from "../components/UserContext";
 
-export default function WatchDetails() {
-  const [watchData, setWatchData] = useState([]);
+export default function TieDetails() {
+  const [tieData, setTieData] = useState([]);
   const { userInfo } = useContext(UserContext);
   const { id } = useParams();
 
@@ -13,7 +13,7 @@ export default function WatchDetails() {
     async function fetchWatchDetails() {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_SERVER_URL}/watch-details/${id}`,
+          `${import.meta.env.VITE_SERVER_URL}/tie-details/${id}`,
           { method: "GET", credentials: "include" }
         );
 
@@ -22,20 +22,20 @@ export default function WatchDetails() {
         }
 
         const watchData = await response.json();
-        setWatchData(watchData);
+        setTieData(tieData);
       } catch (err) {
         console.error("Error fetching data:", err);
       }
     }
 
-    fetchWatchDetails();
+    fetchTieDetails();
   }, [id]);
 
   const images = [
-    watchData.image1,
-    watchData.image2,
-    watchData.image3,
-    watchData.image4,
+    tieData.image1,
+    tieData.image2,
+    tieData.image3,
+    tieData.image4,
   ];
 
   console.log(userInfo);
@@ -46,7 +46,7 @@ export default function WatchDetails() {
       {
         method: "POST",
         credentials: "include",
-        body: JSON.stringify({ watchId: watchData.id, userId: userInfo.id }),
+        body: JSON.stringify({ tieId: tieData.id, userId: userInfo.id }),
         headers: { "Content-Type": "application/json" },
       }).then((response) => {
         if (!response.ok) {
@@ -60,9 +60,9 @@ export default function WatchDetails() {
   }
 
   return (
-    <div className="watch-details-wrapper d-flex align-items-center justify-content-center">
+    <div className="tie-details-wrapper d-flex align-items-center justify-content-center">
       <Navigation />
-      <Container className="mt-4 watch-details-container-custom">
+      <Container className="mt-4 tie-details-container-custom">
         <Row>
           <Col xs={12} md={6}>
             <Carousel>
@@ -78,7 +78,7 @@ export default function WatchDetails() {
             </Carousel>
           </Col>
           <Col xs={12} md={6} className="d-flex align-items-center">
-            <div className="watch-details-info">
+            <div className="tie-details-info">
               <h5>${watchData.price}</h5>
               <h2>{watchData.name}</h2>
               <h4>{watchData.brand}</h4>
@@ -86,7 +86,7 @@ export default function WatchDetails() {
               <Button className="add-to-cart-btn" onClick={addToCartHandler}>
                 Add to Cart
               </Button>
-              {/* <Link to={`/watches/${watchData.brand}`}>More from this brand</Link> */}
+              {/* <Link to={`/watches/${tieData.brand}`}>More from this brand</Link> */}
             </div>
           </Col>
         </Row>

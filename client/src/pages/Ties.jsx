@@ -6,230 +6,32 @@ import Explore from "../components/Explore";
 import Footer from "../components/Footer";
 
 export default function Ties() {
-  const itemsOne = [
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+  const [watchData, setWatchData] = useState([]);
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+     useEffect(() => {
+        async function fetchTies() {
+          try {
+            const response = await fetch(
+              `${import.meta.env.VITE_SERVER_URL}/ties`,
+              { method: "GET", credentials: "include" }
+            );
+    
+            if (!response.ok) {
+              throw new Error("Failed to fetch data");
+            }
+    
+            const watchData = await response.json();
+            setWatchData(watchData);
+            console.log(watchData);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+    
+        fetchTies();
+      }, [setTieData]);
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-  ];
-  const itemsTwo = [
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-  ];
 
   return (
     <div className="ties-wrapper">

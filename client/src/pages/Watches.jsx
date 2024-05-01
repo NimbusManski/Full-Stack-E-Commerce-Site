@@ -89,18 +89,6 @@ export default function Watches() {
                 <p>A new era of accessories.</p>
               </div>
             </div>
-            {/* <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsTwo.map((item, index) => (
-                <Col
-                  key={index}
-                  style={{ marginBottom: "20px", marginTop: "20px" }}
-                >
-                  <Link to={""}>
-                    <Item {...item} />
-                  </Link>
-                </Col>
-              ))}
-            </Row> */}
           </Container>
         </section>
         <Explore />

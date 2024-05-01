@@ -1,6 +1,8 @@
-body {
+ html, body {
   background-color: white;
   font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 /* Hero */
@@ -580,9 +582,16 @@ text-decoration: underline;
 }
 
 /* Cart Page */
-.cart-item {
+
+.cart-wrapper {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  
+}
+
+.cart-item {
+  display: flex;
   align-items: center;
   margin-bottom: 20px; 
 }
@@ -595,21 +604,121 @@ text-decoration: underline;
 
 .cart-item-details {
   text-align: center; 
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-item-details button {
+  border-radius: 0;
+  color:#aaa;
+  background-color: transparent;
+  border: none;
+}
+
+.cart-item-details button:hover {
+  background-color: transparent;
+  color: #7f7f7f;
 }
 
 .cart-container-custom {
-  padding-top: 20%;
+  padding-top: 10%;
+}
+
+.checkout-btn {
+  background-color: black;
+  border: none;
+  border-radius: 0;
+  padding: 10px;
+  margin: 10px;
+  margin-left: 40%;
+  width: 20%;
+
+}
+
+.checkout-btn a {
+  color: white;
+  text-decoration: none;
+}
+
+
+.checkout-form-container {
+  max-width: 500px;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.checkout-form-container h2 {
+  margin-bottom: 20px;
+}
+
+.checkout-form-container p {
+  margin-top: 20px;
+}
+
+.checkout-form-container a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.checkout-form-container a:hover {
+  text-decoration: underline;
+}
+
+.place-order-btn {
+  color: white;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 0;
+  background-color: black;
+  border:none;
+}
+
+.off-canvas {
+  z-index: 10000;
+  background-color:rgb(20, 20, 20);
+  color: white;
+}
+
+.off-canvas input {
+  border-radius: 0;
 }
 
 /* Footer */
 .footer {
-  background-color: black;
-  color: white;
-  display: flex;
-  justify-content: center;
-  padding: 10px;
+  /* position: absolute; */
+  width: 100%;
+  background-color: #f8f9fa; 
+  padding: 20px 0; 
+  background-color: rgb(20, 20, 20);
+  color:  lightgray;
+  /* bottom: 0; */
 }
 
+.footer-logo {
+  max-width: 60px; 
+}
+
+.btn-back-to-top {
+  color: #fff; 
+}
+
+.btn-back-to-top:hover {
+  color: #ccc; 
+}
+
+.btn-back-to-top:focus {
+  color: #ccc; 
+}
+
+.btn-back-to-top svg {
+  vertical-align: middle; 
+}
+
+.copyright {
+  margin-top: 20px;
+}
 
 
 

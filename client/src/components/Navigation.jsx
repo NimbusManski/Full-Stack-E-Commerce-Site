@@ -74,6 +74,7 @@ export default function Navigation() {
             className="d-inline-block align-top"
           ></img>
         </Navbar.Brand>
+        <span>Logged in as {userInfo.username}  |  </span>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
@@ -92,7 +93,6 @@ export default function Navigation() {
               <NavDropdown.Item href="/shoes">Shoes</NavDropdown.Item>
               <NavDropdown.Item href="/belts">Belts</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="/login">Profile</NavDropdown.Item>
               <NavDropdown.Item href="" onClick={logout}>
                 Logout
               </NavDropdown.Item>

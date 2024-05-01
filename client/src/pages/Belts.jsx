@@ -1,235 +1,38 @@
+import { useState,useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
-import Item from "../models/Item";
+import Belt from "../models/Belt";
 import { Link } from "react-router-dom";
 import Explore from "../components/Explore";
 import Footer from "../components/Footer";
 
 export default function Belts() {
-  const itemsOne = [
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+  const [beltData, setBeltData] = useState([]);
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+     useEffect(() => {
+        async function fetchBelts() {
+          try {
+            const response = await fetch(
+              `${import.meta.env.VITE_SERVER_URL}/belts`,
+              { method: "GET", credentials: "include" }
+            );
+    
+            if (!response.ok) {
+              throw new Error("Failed to fetch data");
+            }
+    
+            const beltData = await response.json();
+            setBeltData(beltData);
+            console.log(beltData);
+          } catch (error) {
+            console.error("Error fetching data:", error);
+          }
+        }
+    
+        fetchBelts();
+      }, [setBeltData]);
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-  ];
-  const itemsTwo = [
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-  ];
 
   return (
     <div className="belts-wrapper">
@@ -259,13 +62,18 @@ export default function Belts() {
               unparalleled taste and distinction.
             </p>
             <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsOne.map((item, index) => (
+              {beltData.map((belt, index) => (
                 <Col
                   key={index}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <Link to={""}>
-                    <Item {...item} />
+                  <Link className="watch-link" to={`/belt-details/${belt.id}`}>
+                    <Belt image1={belt.image1}
+                    brand={belt.brand}
+                    name={belt.name}
+                    description={belt.description}
+                    price={belt.price}
+                    />
                   </Link>
                 </Col>
               ))}
@@ -278,18 +86,6 @@ export default function Belts() {
                 <p>Your Luxury, Our Craftsmanship.</p>
               </div>
             </div>
-            <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsTwo.map((item, index) => (
-                <Col
-                  key={index}
-                  style={{ marginBottom: "20px", marginTop: "20px" }}
-                >
-                  <Link to={""}>
-                    <Item {...item} />
-                  </Link>
-                </Col>
-              ))}
-            </Row>
           </Container>
         </section>
         <Explore />
