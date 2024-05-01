@@ -37,9 +37,8 @@ export default function CheckoutForm({ show, onClose, totalPrice, cartItems }) {
     cartData.forEach(item => {
       console.log(item.quantity);
     });
-    // Call your backend API to create a payment intent
+   
     try {
-      // Send payment information to your backend
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/create-checkout-session`, {
         method: 'POST',
         headers: {
@@ -57,7 +56,6 @@ export default function CheckoutForm({ show, onClose, totalPrice, cartItems }) {
 
       console.log(data.sessionId);
 
-      // Call Stripe.js to handle the payment
       const stripe = await loadStripe("pk_test_51PBMSrFURpMDh2V8iNXUfd0YkzM2xKGttgdqQxc96qqNrcxdlfBDH1Rf0QFVsc328ibuIbKetBcqyTyKDCohDcON00e9YCqlY7");
       const { error } = await stripe.redirectToCheckout({
         sessionId: data.sessionId,

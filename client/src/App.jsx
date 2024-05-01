@@ -7,6 +7,7 @@ import WatchDetails from './pages/WatchDetails';
 import Ties from './pages/Ties';
 import Shoes from './pages/Shoes';
 import Belts from './pages/Belts';
+import BeltDetails from './pages/BeltsDetails';
 import Cart from './pages/Cart';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css'
@@ -24,6 +25,7 @@ function App() {
         <Route path='/register' element={<Register />} />
         <Route path='/watches' element={<Watches />} />
         <Route path='/watch-details/:id' element={<WatchDetails />} />
+        <Route path='/belt-details/:id' element={<BeltDetails />} />
         <Route path='/ties' element={<Ties />} />
         <Route path='/shoes' element={<Shoes />} />
         <Route path='/Belts' element={<Belts />} />

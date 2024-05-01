@@ -8,7 +8,7 @@ const cors = require("cors");
 const multer = require("multer");
 const uploadMiddleware = multer({ dest: "uploads/" });
 const fs = require("fs");
-const stripe = require('stripe')('sk_test_51PBMSrFURpMDh2V89nx43jc8EAbxQ2dZVcxpH698QHjdzqqPkKSiDJ2jKwyuBxLdyL2qCPLDuhewtL9EzcRiPkRn00YseOHKUc');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const app = express();
 
@@ -290,7 +290,7 @@ app.post("/add-to-cart", (req, res) => {
   try {
     const { userId, watchId } = req.body;
 
-    // Check if the item already exists in the cart
+ 
     const selectQuery = "SELECT * FROM cart WHERE user_id = ? AND watch_id = ?";
     db.query(selectQuery, [userId, watchId], (err, result) => {
       if (err) {
@@ -299,7 +299,7 @@ app.post("/add-to-cart", (req, res) => {
       }
 
       if (result.length === 0) {
-        // If the item doesn't exist, insert a new row with quantity 1
+        
         const insertQuery = "INSERT INTO cart (user_id, watch_id, quantity) VALUES (?, ?, 1)";
         db.query(insertQuery, [userId, watchId], (err) => {
           if (err) {
@@ -309,7 +309,7 @@ app.post("/add-to-cart", (req, res) => {
           res.status(200).json({ message: "Item added to cart" });
         });
       } else {
-        // If the item already exists, increment its quantity
+      
         const updateQuery = "UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND watch_id = ?";
         db.query(updateQuery, [userId, watchId], (err) => {
           if (err) {
@@ -410,38 +410,37 @@ app.post("/create-checkout-session", async (req, res) => {
   try {
     const { cart } = req.body;
 
-    // Create an array to store line items
+
     const lineItems = [];
 
-    // Iterate over each item in the cart
+
     cart.forEach((item) => {
-      // Construct line item for each item in the cart
+ 
       const lineItem = {
         price_data: {
           currency: 'usd',
           product_data: {
             name: item.name,
           },
-          unit_amount: item.price * 100, // Convert price to cents if it's in dollars
+          unit_amount: item.price * 100, 
         },
-        quantity: item.quantity, // Include quantity for each item
+        quantity: item.quantity,
       };
       console.log(item.quantity, item.name, item.price);
 
-      // Push the line item to the lineItems array
       lineItems.push(lineItem);
     });
 
-    // Create a checkout session with Stripe
+   
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ['card'],
       line_items: lineItems,
       mode: 'payment',
-      success_url: 'http://localhost:5173/cart?success=true', // Redirect to cart page with success parameter
+      success_url: 'http://localhost:5173/cart?success=true', 
   cancel_url: 'http://localhost:5173/cart?cancel=true',  
     });
 
-    // Return the session ID to the client
+
     res.json({ sessionId: session.id });
   } catch (error) {
     console.error('Error:', error);

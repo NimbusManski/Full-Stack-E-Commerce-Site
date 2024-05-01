@@ -1,23 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
-import { Container, Row, Col, Button, Offcanvas } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import { UserContext } from "../components/UserContext";
 import Navigation from "../components/Navigation";
 import Footer from "../components/Footer";
-import CheckoutForm from "./CheckoutForm";
+
 import { MdClose } from "react-icons/md";
 import { loadStripe } from '@stripe/stripe-js';
 
 export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const { userInfo } = useContext(UserContext);
-  const [show, setShow] = useState(false);
-  const [totalPrice, setTotalPrice] = useState(0);
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const success = queryParams.get('success');
   const cancel = queryParams.get('cancel');
-  const [paymentCompleted, setPaymentCompleted] = useState(false);
+ 
 
   useEffect(() => {
     if (success) {
@@ -91,9 +89,9 @@ export default function Cart() {
     cartData.forEach(item => {
       console.log(item.quantity);
     });
-    // Call your backend API to create a payment intent
+ 
     try {
-      // Send payment information to your backend
+   
       const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/create-checkout-session`, {
         method: 'POST',
         headers: {
@@ -111,7 +109,7 @@ export default function Cart() {
 
       console.log(data.sessionId);
 
-      // Call Stripe.js to handle the payment
+      
       const stripe = await loadStripe("pk_test_51PBMSrFURpMDh2V8iNXUfd0YkzM2xKGttgdqQxc96qqNrcxdlfBDH1Rf0QFVsc328ibuIbKetBcqyTyKDCohDcON00e9YCqlY7");
       const { error } = await stripe.redirectToCheckout({
         sessionId: data.sessionId,
@@ -143,8 +141,8 @@ export default function Cart() {
 
       if (response.status === 200) {
         alert('Item removed');
-        // Optionally, update the cart items state or perform any other action
-        fetchCartItems(); // Refresh cart items after removal
+      
+        fetchCartItems(); 
       }
     } catch(err) {
         console.log(err)
@@ -210,19 +208,8 @@ export default function Cart() {
           Checkout
         </Button>
       </div>
-      {/* Checkout Offcanvas */}
-      <Offcanvas
-        className="off-canvas"
-        show={show}
-        onHide={() => setShow(false)}
-        placement="end"
-      >
-        <Offcanvas.Header closeButton></Offcanvas.Header>
-        <Offcanvas.Body>
-          <CheckoutForm totalPrice={totalPrice} cartItems={cartItems} />
-        </Offcanvas.Body>
-      </Offcanvas>
-      <Footer />
+
+ <Footer />
     </div>
   );
 }
