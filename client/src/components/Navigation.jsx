@@ -9,33 +9,25 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-  async function fetchUserData() {
     try {
-      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/profile`, {
-        method: "GET",
+      fetch(`${import.meta.env.VITE_SERVER_URL}/profile`, {
         credentials: "include",
+      }).then((response) => {
+        response.json().then((userInfo) => {
+          setUserInfo(userInfo);
+          if (response.status === 401) {
+            navigate("/login");
+          }
+        });
       });
-
-      if (!response.ok) {
-        throw new Error("Failed to fetch user data");
-      }
-
-      const userInfo = await response.json();
-      setUserInfo(userInfo);
     } catch (err) {
-      console.log(err);
-
-      if (err.status === 401) {
+      if (err.response.status === 401) {
         alert("Session has expired");
         navigate("/login");
       }
     }
-  }
+  }, []);
 
-  if (Object.keys(userInfo).length === 0) {
-    fetchUserData();
-  }
-}, []);
 
   function logout() {
     try {
