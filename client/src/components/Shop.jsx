@@ -1,83 +1,41 @@
+import { useEffect, useState } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Item from "../models/Item";
 import { Link } from "react-router-dom";
 
 export default function Shop() {
-  const items = [
-    {
-      maker: "some maker",
-      imageUrl: "/images//watches/Nautilus-Moonphase.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+ const [bestSellers, setBestSellers] = useState([])
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/watches/watch-2.avif",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+  useEffect(() => {
+    async function fetchBestSellers() {
+      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/best-sellers`, {
+        method: "GET",
+        headers: {"Content-Type" : "application/json"},
+      })
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
+      const bestSellers = await response.json();
+      setBestSellers(bestSellers);
+      console.log(bestSellers)
+    }
 
-    {
-      maker: "some maker",
-      imageUrl: "/images/shoes/shoe-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/belts/belt-2.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-1.webp",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-
-    {
-      maker: "some maker",
-      imageUrl: "/images/ties/tie-2.jpg",
-      name: "some name",
-      description: "some description",
-      price: 32,
-    },
-  ];
+    fetchBestSellers()
+  }, [])
 
   return (
-    <section className="items">
+    <section className="items" id="shop">
       <Container className="text-center">
-        <h2 className="shop-header">Crafted for Elegance, Tailored for You</h2>
+        <h2 className="shop-header" >Best Sellers</h2>
         <Row xs={1} sm={2} md={3} lg={4}>
-          {items.map((item, index) => (
-            <Col key={index} style={{ marginBottom: "20px", marginTop: "20px" }}>
-              <Link to={''}>
-                <Item {...item} />
+          {bestSellers.map((item, index) => (
+            <Col key={index} className="item-col">
+              <Link className="details-link" to={`/${item.type}-details/${item.id}`}>
+                <Item
+                  image={item.image}
+                  brand={item.brand}
+                  name={item.name}
+                  description={item.description}
+                  price={item.price}
+                />
               </Link>
             </Col>
           ))}

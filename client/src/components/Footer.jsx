@@ -15,10 +15,10 @@ export default function Footer() {
             />
           </Col>
           <Col md={4} className="text-center">
-            <p className="copyright">
+            <span className="copyright">
               &copy; {new Date().getFullYear()} Mens Luxury.
               All rights reserved.
-            </p>
+            </span>
           </Col>
           <Col md={4} className="text-md-right text-center">
           </Col>

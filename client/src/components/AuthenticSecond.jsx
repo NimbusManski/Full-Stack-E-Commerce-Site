@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function AuthenticSecond() {
   return (
     <div className="auth-section">
@@ -7,7 +9,7 @@ export default function AuthenticSecond() {
           Mens Luxury is home to the greatest collection of pre-owned luxury
           watches, shoes, ties and belts, all certified as authentic and Collector Quality.
         </p>
-        <button>Shop Now</button>
+        <button><Link to={"/about-us"}>Learn More</Link> </button>
       </div>
       <div className="auth-section-img">
         <img src="/images/Authentic-attr.avif"></img>

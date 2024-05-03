@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export default function Authentic() {
   return (
     <div className="auth-section">
@@ -11,7 +13,7 @@ export default function Authentic() {
           locations, global community, curated collections - both new and
           collectible pre-owned - and let’s talk luxury.
         </p>
-        <button>Learn More</button>
+        <button><Link to={"/about-us"}>Learn More</Link> </button>
       </div>
     </div>
   );

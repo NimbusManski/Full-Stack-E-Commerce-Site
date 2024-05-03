@@ -10,7 +10,7 @@ export default function Hero() {
             <p className="lead">Timeless Luxury</p>
             <p>Explore our exquisite collection of luxury watches and accessories.</p>
             <div className="button-wrapper mt-3">
-              <button className="btn-custom">Get Started</button>
+              <button href="#shop" className="btn-custom"><a href="#shop">Get Started</a></button>
             </div>
           </Col>
         </Row>

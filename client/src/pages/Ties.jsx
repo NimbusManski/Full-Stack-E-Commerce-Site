@@ -1,13 +1,13 @@
+import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
-import Item from "../models/Item";
 import { Link } from "react-router-dom";
 import Explore from "../components/Explore";
 import Footer from "../components/Footer";
+import Tie from "../models/Tie";
 
 export default function Ties() {
-
-  const [watchData, setWatchData] = useState([]);
+  const [tieData, setTieData] = useState([]);
 
      useEffect(() => {
         async function fetchTies() {
@@ -21,9 +21,9 @@ export default function Ties() {
               throw new Error("Failed to fetch data");
             }
     
-            const watchData = await response.json();
-            setWatchData(watchData);
-            console.log(watchData);
+            const tieData = await response.json();
+            setTieData(tieData);
+            console.log(tieData);
           } catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -39,7 +39,7 @@ export default function Ties() {
       <div className="ties-page-hero">
         <Container className="header-section">
           <Row className="justify-content-center align-items-center ties-row-custom">
-            <Col md={8} className="text-center watch-page-hero-col-custom">
+            <Col md={8} className="text-center tie-page-hero-col-custom">
               <div className="lead-wrapper">
                 <div className="button-wrapper mt-3"></div>
               </div>
@@ -62,13 +62,18 @@ export default function Ties() {
               generations.
             </p>
             <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsOne.map((item, index) => (
+              {tieData.map((tie, index) => (
                 <Col
                   key={index}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <Link to={""}>
-                    <Item {...item} />
+                   <Link className="details-link" to={`/tie-details/${tie.id}`}>
+                    <Tie image1={tie.image1}
+                    brand={tie.brand}
+                    name={tie.name}
+                    description={tie.description}
+                    price={tie.price}
+                    />
                   </Link>
                 </Col>
               ))}
@@ -81,18 +86,6 @@ export default function Ties() {
                 <p> Tied Together with Luxury.</p>
               </div>
             </div>
-            <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsTwo.map((item, index) => (
-                <Col
-                  key={index}
-                  style={{ marginBottom: "20px", marginTop: "20px" }}
-                >
-                  <Link to={""}>
-                    <Item {...item} />
-                  </Link>
-                </Col>
-              ))}
-            </Row>
           </Container>
         </section>
         <Explore />

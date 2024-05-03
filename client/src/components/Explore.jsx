@@ -17,9 +17,6 @@ export default function Explore() {
           <Link to={"/about-us"} className="explore-link mx-2" onClick={scrollToTop}>About Us</Link>
         </div>
         <div className="explore-link-wrapper">
-          <Link to={"/team"} className="explore-link mx-2" onClick={scrollToTop}>Meet the Team</Link>
-        </div>
-        <div className="explore-link-wrapper">
           <Link to={"/watches"} className="explore-link mx-2" onClick={scrollToTop}>Watches</Link>
         </div>
         <div className="explore-link-wrapper">

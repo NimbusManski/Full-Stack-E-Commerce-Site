@@ -1,12 +1,14 @@
+import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import Navigation from "../components/Navigation";
-import Item from "../models/Item";
 import { Link } from "react-router-dom";
 import Explore from "../components/Explore";
 import Footer from "../components/Footer";
+import Shoe from "../models/Shoe";
 
 export default function Shoes() {
   const [shoeData, setShoeData] = useState([]);
+
 
   useEffect(() => {
      async function fetchShoes() {
@@ -20,8 +22,8 @@ export default function Shoes() {
            throw new Error("Failed to fetch data");
          }
  
-         const watchData = await response.json();
-         setShoesData(shoeData);
+         const shoeData = await response.json();
+         setShoeData(shoeData);
          console.log(shoeData);
        } catch (error) {
          console.error("Error fetching data:", error);
@@ -60,13 +62,18 @@ export default function Shoes() {
               unparalleled taste and distinction.
             </p>
             <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsOne.map((item, index) => (
+              {shoeData.map((shoe, index) => (
                 <Col
                   key={index}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <Link to={""}>
-                    <Item {...item} />
+                   <Link className="details-link" to={`/shoe-details/${shoe.id}`}>
+                    <Shoe image1={shoe.image1}
+                    brand={shoe.brand}
+                    name={shoe.name}
+                    description={shoe.description}
+                    price={shoe.price}
+                    />
                   </Link>
                 </Col>
               ))}
@@ -79,18 +86,6 @@ export default function Shoes() {
                 <p> Where Luxury Meets Comfort and Style.</p>
               </div>
             </div>
-            <Row xs={1} sm={2} md={3} lg={4}>
-              {itemsTwo.map((item, index) => (
-                <Col
-                  key={index}
-                  style={{ marginBottom: "20px", marginTop: "20px" }}
-                >
-                  <Link to={""}>
-                    <Item {...item} />
-                  </Link>
-                </Col>
-              ))}
-            </Row>
           </Container>
         </section>
         <Explore />

@@ -7,6 +7,7 @@ import { UserContext } from "../components/UserContext";
 export default function ShoeDetails() {
   const [shoeData, setShoeData] = useState([]);
   const { userInfo } = useContext(UserContext);
+ 
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,7 +22,7 @@ export default function ShoeDetails() {
           throw new Error("Failed to fetch data");
         }
 
-        const watchData = await response.json();
+        const shoeData = await response.json();
         setShoeData(shoeData);
       } catch (err) {
         console.error("Error fetching data:", err);
@@ -33,9 +34,7 @@ export default function ShoeDetails() {
 
   const images = [
     shoeData.image1,
-    shoeData.image2,
-    shoeData.image3,
-    shoeData.image4,
+    shoeData.image2
   ];
 
   console.log(userInfo);
@@ -46,13 +45,13 @@ export default function ShoeDetails() {
       {
         method: "POST",
         credentials: "include",
-        body: JSON.stringify({ shoeId: shoeData.id, userId: userInfo.id }),
+        body: JSON.stringify({ itemType: "shoe", itemId: shoeData.id, userId: userInfo.id }),
         headers: { "Content-Type": "application/json" },
       }).then((response) => {
         if (!response.ok) {
           throw new Error("Failed to add item");
         }
-
+        alert("Item added to cart");
         console.log("Item added");
       });} catch(err) {
         console.error("Error adding item:", err);
@@ -60,9 +59,9 @@ export default function ShoeDetails() {
   }
 
   return (
-    <div className="shoe-details-wrapper d-flex align-items-center justify-content-center">
-      <Navigation />
-      <Container className="mt-4 shoe-details-container-custom">
+    <div className="details-wrapper d-flex align-items-center justify-content-center">
+      <Navigation/>
+      <Container className="mt-4 details-container-custom">
         <Row>
           <Col xs={12} md={6}>
             <Carousel>
@@ -78,7 +77,7 @@ export default function ShoeDetails() {
             </Carousel>
           </Col>
           <Col xs={12} md={6} className="d-flex align-items-center">
-            <div className="shoe-details-info">
+            <div className="details-info">
               <h5>${shoeData.price}</h5>
               <h2>{shoeData.name}</h2>
               <h4>{shoeData.brand}</h4>

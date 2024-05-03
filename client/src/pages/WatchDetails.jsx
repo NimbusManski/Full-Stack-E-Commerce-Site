@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { Container, Row, Col, Carousel, Button } from "react-bootstrap";
 import Navigation from "../components/Navigation";
 import { UserContext } from "../components/UserContext";
@@ -46,13 +46,13 @@ export default function WatchDetails() {
       {
         method: "POST",
         credentials: "include",
-        body: JSON.stringify({ watchId: watchData.id, userId: userInfo.id }),
+        body: JSON.stringify({ itemType: "watch", itemId: watchData.id, userId: userInfo.id }),
         headers: { "Content-Type": "application/json" },
       }).then((response) => {
         if (!response.ok) {
           throw new Error("Failed to add item");
         }
-
+        alert("Item added to cart");
         console.log("Item added");
       });} catch(err) {
         console.error("Error adding item:", err);
@@ -60,9 +60,9 @@ export default function WatchDetails() {
   }
 
   return (
-    <div className="watch-details-wrapper d-flex align-items-center justify-content-center">
-      <Navigation />
-      <Container className="mt-4 watch-details-container-custom">
+    <div className="details-wrapper d-flex align-items-center justify-content-center">
+     <Navigation />
+      <Container className="mt-4 details-container-custom">
         <Row>
           <Col xs={12} md={6}>
             <Carousel>
@@ -78,7 +78,7 @@ export default function WatchDetails() {
             </Carousel>
           </Col>
           <Col xs={12} md={6} className="d-flex align-items-center">
-            <div className="watch-details-info">
+            <div className="details-info">
               <h5>${watchData.price}</h5>
               <h2>{watchData.name}</h2>
               <h4>{watchData.brand}</h4>

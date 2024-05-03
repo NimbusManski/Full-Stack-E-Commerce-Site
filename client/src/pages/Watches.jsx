@@ -7,8 +7,10 @@ import { Link } from "react-router-dom";
 import Explore from "../components/Explore";
 import Footer from "../components/Footer";
 
+
 export default function Watches() {
      const [watchData, setWatchData] = useState([]);
+
 
      useEffect(() => {
         async function fetchWatches() {
@@ -70,7 +72,7 @@ export default function Watches() {
                   key={index}
                   style={{ marginBottom: "20px", marginTop: "20px" }}
                 >
-                  <Link className="watch-link" to={`/watch-details/${watch.id}`}>
+                  <Link className="details-link" to={`/watch-details/${watch.id}`}>
                     <Watch image1={watch.image1}
                     brand={watch.brand}
                     name={watch.name}

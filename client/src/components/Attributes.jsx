@@ -1,3 +1,5 @@
+
+import { Link } from "react-router-dom";
 export default function Attributes() {
     return (
       <div className="attr-container">
@@ -34,7 +36,7 @@ export default function Attributes() {
           </div>
         </div>
         <div className="button-container">
-          <button>Shop Now</button>
+        <button><Link to={"/about-us"}>Learn More</Link></button>
         </div>
       </div>
     );
