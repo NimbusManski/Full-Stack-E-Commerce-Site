@@ -9,35 +9,24 @@ export default function Navigation() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/profile`, {
-          credentials: "include",
-        });
-  
-        if (response.status === 401) {
-          navigate("/login");
-          return;
-        }
-  
-        const userInfo = await response.json();
-        setUserInfo(userInfo);
-      } catch (err) {
-        if (err.response && err.response.status === 401) {
-          if (Object.keys(userInfo).length === 0) {
-            navigate("/login");
-          } else {
-            alert("Session has expired");
+    try {
+      fetch(`${process.env.REACT_APP_SERVER_URL}/profile`, {
+        credentials: "include",
+      }).then((response) => {
+        response.json().then((userInfo) => {
+          setUserInfo(userInfo);
+          if (response.status === 401) {
             navigate("/login");
           }
-        }
+        });
+      });
+    } catch (err) {
+      if (err.response.status === 401) {
+        alert("Session has expired");
+        navigate("/login");
       }
-    };
-  
-    if (Object.keys(userInfo).length === 0) {
-      fetchData();
     }
-  }, [setUserInfo]);
+  }, []);
 
 
   async function logout() {
