@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { Form, FormCheck } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import{ UserContext} from "../components/UserContext";
@@ -10,6 +10,10 @@ export default function Login() {
   const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    window.location.reload();
+  })
 
   async function login(e) {
     e.preventDefault();
