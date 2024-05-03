@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'http://localhost:5173',
+app.use(cors({ credentials: true, origin: 'https://full-stack-e-commerce-site.onrender.com',
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 allowedHeaders: ['content-type', 'Authorization'], }));
 app.use("/uploads", express.static(__dirname + "/uploads"));
@@ -88,7 +88,7 @@ app.post("/login", (req, res) => {
             },
             secret,
             {
-              expiresIn: "24H",
+              expiresIn: 10,
             },
             (err, token) => {
               if (err) {

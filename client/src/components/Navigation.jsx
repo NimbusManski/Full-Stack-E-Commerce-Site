@@ -15,24 +15,34 @@ export default function Navigation() {
           method: "GET",
           credentials: "include",
         });
-
+  
         if (!response.ok) {
           throw new Error("Failed to fetch user data");
         }
 
-        if(response.status === 401) {
-          alert("Session has expired. Please login")
-        }
 
-        const userData = await response.json();
-        setUserInfo(userData);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
+  
+        const userInfo = await response.json();
+        setUserInfo(userInfo);
+      } catch (err) {
+        console.log(err);
+  
+        if (err.response && err.response.status === 401) {
+          if (Object.keys(userInfo).length === 0) {
+            alert("Session has expired. Please login");
+            navigate("/login");
+          } else {
+            alert("Session has expired");
+            navigate("/login");
+          }
+        }
       }
     }
-
-    fetchUserData();
-  }, [setUserInfo]);
+  
+    if (Object.keys(userInfo).length === 0) {
+      fetchUserData();
+    }
+  }, []);
 
   function logout() {
     try {
@@ -42,6 +52,8 @@ export default function Navigation() {
       });
 
       setUserInfo({});
+      window.localStorage.clear(); 
+      window.sessionStorage.clear();
       navigate("/login");
       window.location.reload();
     } catch (err) {
