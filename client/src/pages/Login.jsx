@@ -8,12 +8,17 @@ export default function Login() {
   const { setUserInfo } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [initialRender, setInitialRender] = useState(true);
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    window.location.reload();
-  }, [])
+    if (!initialRender) {
+      window.location.reload();
+    } else {
+      setInitialRender(false);
+    }
+  }, [initialRender]);
 
   async function login(e) {
     e.preventDefault();
