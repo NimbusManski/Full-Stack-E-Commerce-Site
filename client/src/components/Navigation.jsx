@@ -31,6 +31,7 @@ export default function Navigation() {
             navigate("/login");
           }
         }
+        
       }
     };
   
@@ -39,6 +40,20 @@ export default function Navigation() {
     }
   }, [setUserInfo]);
 
+
+  useEffect(() => {
+    const redirectCondition = async () => {
+      if(userInfo.username === '') {
+        navigate("/login");
+      }
+
+      console.log(userInfo.username)
+    }
+
+    
+
+    redirectCondition();
+  }, [userInfo]);
 
   async function logout() {
     try {
