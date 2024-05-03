@@ -24,7 +24,7 @@ export default function Navigation() {
         setUserInfo(userInfo);
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          if (userInfo.username === undefined) {
+          if (userInfo === undefined) {
             navigate("/login");
           } else {
             alert("Session has expired");
@@ -49,7 +49,7 @@ export default function Navigation() {
         credentials: "include",
       });
   
-      userInfo.username === undefined;
+      setUserInfo(undefined);
       window.localStorage.clear(); 
       window.sessionStorage.clear();
       localStorage.removeItem("token");
