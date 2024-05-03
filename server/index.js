@@ -407,7 +407,7 @@ FROM
   LEFT JOIN bjyigszlcnclqmgyhmui.shoes AS s ON c.item_id = s.id AND c.item_type = 'shoe'
   LEFT JOIN bjyigszlcnclqmgyhmui.belts AS b ON c.item_id = b.id AND c.item_type = 'belt'
 WHERE
-  c.user_id = 2
+  c.user_id = ?
   `;
 
     db.query(q, [userId], (err, data) => {
