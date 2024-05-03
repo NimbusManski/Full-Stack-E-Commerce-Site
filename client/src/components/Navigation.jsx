@@ -49,7 +49,7 @@ export default function Navigation() {
         credentials: "include",
       });
   
-      setUserInfo({});
+      userInfo.username === undefined;
       window.localStorage.clear(); 
       window.sessionStorage.clear();
       localStorage.removeItem("token");
