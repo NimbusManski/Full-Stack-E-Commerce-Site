@@ -39,7 +39,7 @@ export default function Navigation() {
     if (Object.keys(userInfo).length === 0) {
       fetchUserData();
     }
-  }, []);
+  }, [setUserInfo]);
 
   function logout() {
     try {
