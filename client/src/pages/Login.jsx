@@ -28,10 +28,6 @@ export default function Login() {
         throw new Error("Failed to login");
       }
 
-      if (response.status === 404) {
-        alert("Invalid username or password");
-      }
-
       const userInfo = await response.json();
       setUserInfo(userInfo);
 
@@ -39,6 +35,9 @@ export default function Login() {
 
     } catch (err) {
       console.error("Error logging in:", err);
+      if (err.response.status === 404) {
+        alert("Invalid username or password");
+      }
     }
   }
 

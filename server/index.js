@@ -157,7 +157,6 @@ app.post("/refresh-token", (req, res) => {
   }
 });
 
-
 app.get("/profile", (req, res) => {
   try {
     const { token } = req.cookies;
