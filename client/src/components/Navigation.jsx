@@ -6,6 +6,7 @@ import { UserContext } from "./UserContext";
 export default function Navigation() {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [scrolled, setScrolled] = useState(false);
+  const [fetchCompleted, setFetchCompleted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +23,7 @@ export default function Navigation() {
   
         const userInfo = await response.json();
         setUserInfo(userInfo);
+        setFetchCompleted(true);
       } catch (err) {
         if (err.response && err.response.status === 401) {
           if (userInfo.username === undefined) {
@@ -44,6 +46,10 @@ export default function Navigation() {
   useEffect(() => {
     const redirectCondition = async () => {
         try {
+            if (!fetchCompleted) {
+                return;
+            }
+
             if (!userInfo || userInfo.username === undefined) {
                 navigate("/login");
             } else {
@@ -53,10 +59,9 @@ export default function Navigation() {
             console.error("Error in redirect condition:", error);
         }
     };
-    
-    redirectCondition();
-}, [userInfo, navigate]);
 
+    redirectCondition();
+}, [userInfo, navigate, fetchCompleted]);
   async function logout() {
     try {
       await fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
