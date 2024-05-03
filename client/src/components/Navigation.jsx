@@ -26,7 +26,7 @@ export default function Navigation() {
         navigate("/login");
       }
     }
-  }, [setUserInfo]);
+  }, []);
 
 
   async function logout() {
