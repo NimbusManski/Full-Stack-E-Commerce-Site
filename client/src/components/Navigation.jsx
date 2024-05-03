@@ -34,7 +34,9 @@ export default function Navigation() {
       }
     };
   
-    fetchData();
+    if (Object.keys(userInfo).length === 0) {
+      fetchData();
+    }
   }, []);
 
 

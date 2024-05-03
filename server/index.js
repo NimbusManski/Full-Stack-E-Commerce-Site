@@ -64,7 +64,7 @@ app.post("/register", (req, res) => {
   }
 });
 
-app.post("/login", async (req, res) => {
+app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -80,7 +80,7 @@ app.post("/login", async (req, res) => {
       if (data.length === 1) {
         const { id, username, password: storedPass } = data[0];
         try {
-          const passwordMatch = await bcrypt.compare(password, storedPass);
+          const passwordMatch = bcrypt.compare(password, storedPass);
           if (passwordMatch) {
             jwt.sign(
               {
