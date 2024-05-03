@@ -37,7 +37,7 @@ export default function Navigation() {
     if (Object.keys(userInfo).length === 0) {
       fetchData();
     }
-  }, [setUserInfo]);
+  }, []);
 
 
   async function logout() {
