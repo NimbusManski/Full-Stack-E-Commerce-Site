@@ -13,7 +13,7 @@ const app = express();
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(cors({ credentials: true, origin: 'https://full-stack-e-commerce-site.onrender.com',
+app.use(cors({ credentials: true, origin: ['https://full-stack-e-commerce-site.onrender.com', "http://localhost:5173"],
 methods: ['GET', 'POST', 'PUT', 'DELETE'],
 allowedHeaders: ['content-type', 'Authorization'], }));
 app.use("/uploads", express.static(__dirname + "/uploads"));
