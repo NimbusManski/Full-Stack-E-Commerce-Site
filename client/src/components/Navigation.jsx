@@ -24,7 +24,7 @@ export default function Navigation() {
         setUserInfo(userInfo);
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          if (Object.keys(userInfo).length === 0) {
+          if (userInfo.username === undefined) {
             navigate("/login");
           } else {
             alert("Session has expired");
@@ -40,18 +40,7 @@ export default function Navigation() {
     }
   }, [userInfo, setUserInfo, navigate]);
 
-
-  useEffect(() => {
-    const redirectCondition = async () => {
-      if(userInfo.username === undefined) {
-        navigate("/login");
-      }
-
-      console.log(userInfo.username)
-    }
-
-    redirectCondition();
-  }, [userInfo]);
+  
 
   async function logout() {
     try {
