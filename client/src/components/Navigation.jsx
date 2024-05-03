@@ -24,7 +24,6 @@ export default function Navigation() {
       if (err.response.status === 401) {
         alert("Session has expired");
         navigate("/login");
-        window.location.reload();
       }
     }
   }, [setUserInfo]);
@@ -37,7 +36,7 @@ export default function Navigation() {
         credentials: "include",
       });
   
-      setUserInfo(null);
+      setUserInfo({});
       window.localStorage.clear(); 
       window.sessionStorage.clear();
       navigate("/login");

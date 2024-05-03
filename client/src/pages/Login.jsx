@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { Form, FormCheck } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import{ UserContext} from "../components/UserContext";
@@ -8,17 +8,10 @@ export default function Login() {
   const { setUserInfo } = useContext(UserContext);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [initialRender, setInitialRender] = useState(true);
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    if (!initialRender) {
-      window.location.reload();
-    } else {
-      setInitialRender(false);
-    }
-  }, [initialRender]);
+  
 
   async function login(e) {
     e.preventDefault();
