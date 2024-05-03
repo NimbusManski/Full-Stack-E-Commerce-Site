@@ -43,14 +43,12 @@ export default function Navigation() {
 
   useEffect(() => {
     const redirectCondition = async () => {
-      if(userInfo.username === '') {
+      if(userInfo.username === undefined) {
         navigate("/login");
       }
 
       console.log(userInfo.username)
     }
-
-    
 
     redirectCondition();
   }, [userInfo]);
