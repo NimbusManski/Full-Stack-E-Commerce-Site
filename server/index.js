@@ -121,11 +121,8 @@ app.post("/login", (req, res) => {
 });
 
 app.post("/refresh-token", (req, res) => {
- 
   const token = req.cookies.token;
-
   const decoded = jwt.verify(token, secret);
-
   const userId = decoded.id;
   const username = decoded.username;
 
