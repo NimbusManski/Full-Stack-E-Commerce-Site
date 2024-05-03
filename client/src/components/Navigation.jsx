@@ -24,7 +24,7 @@ export default function Navigation() {
         setUserInfo(userInfo);
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          if (userInfo === undefined) {
+          if (userInfo.username === undefined) {
             navigate("/login");
           } else {
             alert("Session has expired");
@@ -38,9 +38,24 @@ export default function Navigation() {
     if (Object.keys(userInfo).length === 0) {
       fetchData();
     }
-  }, []);
+  }, [userInfo, setUserInfo, navigate]);
 
-  
+
+  useEffect(() => {
+    const redirectCondition = async () => {
+        try {
+            if (!userInfo || userInfo.username === undefined) {
+                navigate("/login");
+            } else {
+                console.log(userInfo.username);
+            }
+        } catch (error) {
+            console.error("Error in redirect condition:", error);
+        }
+    };
+    
+    redirectCondition();
+}, [userInfo, navigate]);
 
   async function logout() {
     try {
@@ -49,7 +64,7 @@ export default function Navigation() {
         credentials: "include",
       });
   
-      setUserInfo(undefined);
+      setUserInfo({});
       window.localStorage.clear(); 
       window.sessionStorage.clear();
       localStorage.removeItem("token");
