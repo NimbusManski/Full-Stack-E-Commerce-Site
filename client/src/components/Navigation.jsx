@@ -20,21 +20,18 @@ export default function Navigation() {
           throw new Error("Failed to fetch user data");
         }
 
-
+        if (response.status === 401) {
+          navigate("/login");
+        }
   
         const userInfo = await response.json();
         setUserInfo(userInfo);
       } catch (err) {
         console.log(err);
   
-        if (err.response && err.response.status === 401) {
-          if (Object.keys(userInfo).length === 0) {
-            alert("Session has expired. Please login");
-            navigate("/login");
-          } else {
-            alert("Session has expired");
-            navigate("/login");
-          }
+        if (err.response.status === 401) {
+          alert("Session has expired");
+          navigate("/login");
         }
       }
     }
@@ -51,7 +48,7 @@ export default function Navigation() {
         credentials: "include",
       });
 
-      setUserInfo({});
+      setUserInfo(null);
       window.localStorage.clear(); 
       window.sessionStorage.clear();
       navigate("/login");
