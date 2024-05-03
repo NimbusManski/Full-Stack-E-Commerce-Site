@@ -29,13 +29,13 @@ export default function Navigation() {
   }, [setUserInfo]);
 
 
-  function logout() {
+  async function logout() {
     try {
-      fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
+      await fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
         method: "POST",
         credentials: "include",
       });
-
+  
       setUserInfo(null);
       window.localStorage.clear(); 
       window.sessionStorage.clear();
