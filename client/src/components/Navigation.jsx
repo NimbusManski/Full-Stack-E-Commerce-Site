@@ -24,6 +24,7 @@ export default function Navigation() {
       if (err.response.status === 401) {
         alert("Session has expired");
         navigate("/login");
+        window.location.reload();
       }
     }
   }, [setUserInfo]);
