@@ -120,6 +120,47 @@ app.post("/login", (req, res) => {
   }
 });
 
+app.post("/refresh-token", (req, res) => {
+ 
+  const token = req.cookies.token;
+
+  const decoded = jwt.verify(token, secret);
+
+  const userId = decoded.id;
+  const username = decoded.username;
+
+  if (blackList.includes(token)) {
+    
+    jwt.sign(
+      {
+        id: userId,
+        username: username,
+      
+      },
+      secret,
+      {
+        expiresIn: 420, 
+      },
+      (err, token) => {
+        if (err) {
+          console.error("Error generating new token:", err);
+          return res.status(500).json({ error: "Internal Server Error" });
+        } else {
+
+          res.cookie("token", token, {
+            secure: true,
+            sameSite: "none",
+          }).json({ token });
+
+        }
+      }
+    );
+  } else {
+    return res.status(401).json({ message: "Refresh token blacklisted" });
+  }
+});
+
+
 app.get("/profile", (req, res) => {
   try {
     const { token } = req.cookies;
