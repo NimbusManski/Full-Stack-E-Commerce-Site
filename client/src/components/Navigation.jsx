@@ -6,7 +6,6 @@ import { UserContext } from "./UserContext";
 export default function Navigation() {
   const { userInfo, setUserInfo } = useContext(UserContext);
   const [scrolled, setScrolled] = useState(false);
-  const [fetchCompleted, setFetchCompleted] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -23,45 +22,24 @@ export default function Navigation() {
   
         const userInfo = await response.json();
         setUserInfo(userInfo);
-        setFetchCompleted(true);
       } catch (err) {
         if (err.response && err.response.status === 401) {
-          if (userInfo.username === undefined) {
+          if (Object.keys(userInfo).length === 0) {
             navigate("/login");
           } else {
             alert("Session has expired");
             navigate("/login");
           }
         }
-
       }
     };
   
     if (Object.keys(userInfo).length === 0) {
       fetchData();
     }
-  }, [userInfo, setUserInfo, navigate]);
+  }, []);
 
 
-  useEffect(() => {
-    const redirectCondition = async () => {
-        try {
-            if (!fetchCompleted) {
-                return;
-            }
-
-            if (!userInfo || userInfo.username === undefined) {
-                navigate("/login");
-            } else {
-                console.log(userInfo.username);
-            }
-        } catch (error) {
-            console.error("Error in redirect condition:", error);
-        }
-    };
-
-    redirectCondition();
-}, [userInfo, navigate, fetchCompleted]);
   async function logout() {
     try {
       await fetch(`${import.meta.env.VITE_SERVER_URL}/logout`, {
