@@ -36,7 +36,7 @@ app.post("/register", (req, res) => {
 
     const hashedPass = bcrypt.hashSync(password, salt);
 
-    const q = "SELECT * FROM luxury_store.users WHERE username = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.users WHERE username = ?";
 
     db.query(q, [username], (err, data) => {
       if (err) {
