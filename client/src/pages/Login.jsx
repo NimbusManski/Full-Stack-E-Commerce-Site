@@ -13,7 +13,7 @@ export default function Login() {
 
   useEffect(() => {
     window.location.reload();
-  })
+  }, [])
 
   async function login(e) {
     e.preventDefault();
