@@ -31,14 +31,14 @@ export default function Navigation() {
             navigate("/login");
           }
         }
-        
+
       }
     };
   
     if (Object.keys(userInfo).length === 0) {
       fetchData();
     }
-  }, [setUserInfo]);
+  }, [userInfo, setUserInfo, navigate]);
 
 
   useEffect(() => {

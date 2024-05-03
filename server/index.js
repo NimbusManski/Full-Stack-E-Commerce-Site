@@ -560,7 +560,7 @@ app.post("/logout", (req, res) => {
        blackList.push(token);
     };
    console.log(blackList + 'from logout');
-    res.clearCookie("token").json({message: "Cookie deleted and blacklisted"});
+    res.cookie(token, "").json({message: "Cookie deleted and blacklisted"});
     res.removeHeader('Cookie');
 
   } catch(err) {
