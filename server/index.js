@@ -325,7 +325,7 @@ app.post("/add-to-cart", (req, res) => {
   try {
     const { userId, itemId, itemType } = req.body;
 
-    const selectQuery = "SELECT * FROM cart WHERE user_id = ? AND item_id = ? AND item_type = ?";
+    const selectQuery = "SELECT * FROM bjyigszlcnclqmgyhmui.cart WHERE user_id = ? AND item_id = ? AND item_type = ?";
     db.query(selectQuery, [userId, itemId, itemType], (err, result) => {
       if (err) {
         console.error(err);
@@ -334,7 +334,7 @@ app.post("/add-to-cart", (req, res) => {
 
       if (result.length === 0) {
         const insertQuery =
-          "INSERT INTO cart (user_id, item_id, item_type, quantity) VALUES (?, ?, ?, 1)";
+          "INSERT INTO bjyigszlcnclqmgyhmui.cart (user_id, item_id, item_type, quantity) VALUES (?, ?, ?, 1)";
         db.query(insertQuery, [userId, itemId, itemType], (err) => {
           if (err) {
             console.error(err);
@@ -344,7 +344,7 @@ app.post("/add-to-cart", (req, res) => {
         });
       } else {
         const updateQuery =
-          "UPDATE cart SET quantity = quantity + 1 WHERE user_id = ? AND item_id = ? AND item_type = ?";
+          "UPDATE bjyigszlcnclqmgyhmui.cart SET quantity = quantity + 1 WHERE user_id = ? AND item_id = ? AND item_type = ?";
         db.query(updateQuery, [userId, itemId, itemType], (err) => {
           if (err) {
             console.error(err);
@@ -450,7 +450,7 @@ app.delete("/clear-cart/:userId", async (req, res) => {
   try {
     const userId = req.params.userId;
 
-    const q = "DELETE FROM luxury_store.cart WHERE user_id = ?";
+    const q = "DELETE FROM bjyigszlcnclqmgyhmui.cart WHERE user_id = ?";
 
     db.query(q, [userId], (err, data) => {
       if (err) {
