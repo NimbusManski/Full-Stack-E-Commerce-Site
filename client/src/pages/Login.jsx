@@ -32,6 +32,9 @@ export default function Login() {
 
     } catch(err) {
         console.error("Error logging in:",err);
+        if(err.reaponse.status === 501) {
+          alert("Username taken")
+        }
     }
   }
 

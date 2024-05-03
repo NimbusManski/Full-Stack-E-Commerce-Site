@@ -21,10 +21,14 @@ export default function Navigation() {
         });
       });
     } catch (err) {
-      if (err.response.status === 401) {
+      if (err.response.status === 401 && Object.keys(userInfo).length === 0) {
+        navigate("/login");
+      }
+      if (err.response.status === 401 && Object.keys(userInfo).length > 0) {
         alert("Session has expired");
         navigate("/login");
       }
+      
     }
   }, []);
 
