@@ -64,7 +64,7 @@ app.post("/register", (req, res) => {
   }
 });
 
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
 
   if (!username || !password) {
@@ -73,41 +73,50 @@ app.post("/login", (req, res) => {
 
   try {
     const q = "SELECT * FROM bjyigszlcnclqmgyhmui.users WHERE username = ?";
-    db.query(q, [username], (err, data) => {
+    db.query(q, [username], async (err, data) => {
       if (err) {
-        res.status(501).json({ message: "Error creating user" });
+        return res.status(501).json({ message: "Error creating user" });
       }
       if (data.length === 1) {
         const { id, username, password: storedPass } = data[0];
-        const passwordMatch = bcrypt.compare(password, storedPass);
-        if (passwordMatch) {
-          jwt.sign(
-            {
-              id,
-              username,
-            },
-            secret,
-            {
-              expiresIn: 420,
-            },
-            (err, token) => {
-              if (err) {
-                console.log(err);
-              } else {
-                res.cookie("token", token, { 
-                  secure: true, 
-                  sameSite: 'none' 
-                }).json({ id, username });
+        try {
+          const passwordMatch = await bcrypt.compare(password, storedPass);
+          if (passwordMatch) {
+            jwt.sign(
+              {
+                id,
+                username,
+              },
+              secret,
+              {
+                expiresIn: 420,
+              },
+              (err, token) => {
+                if (err) {
+                  console.log(err);
+                  return res.status(500).json({ error: "Internal Server Error" });
+                } else {
+                  res.cookie("token", token, { 
+                    secure: true, 
+                    sameSite: 'none' 
+                  }).json({ id, username });
+                }
               }
-            }
-          );
+            );
+          } else {
+            return res.status(401).json({ error: "Invalid username or password" });
+          }
+        } catch (err) {
+          console.log(err);
+          return res.status(500).json({ error: "Internal Server Error" });
         }
       } else {
-        res.status(401).json({ error: "Invalid username or password" });
+        return res.status(401).json({ error: "Invalid username or password" });
       }
     });
   } catch (err) {
     console.log(err);
+    return res.status(500).json({ error: "Internal Server Error" });
   }
 });
 
@@ -515,6 +524,7 @@ app.post("/logout", (req, res) => {
     };
    console.log(blackList + 'from logout');
     res.clearCookie("token").json({message: "Cookie deleted and blacklisted"});
+    res.removeHeader('Cookie');
 
   } catch(err) {
     console.error(err);

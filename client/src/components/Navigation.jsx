@@ -39,6 +39,7 @@ export default function Navigation() {
       setUserInfo({});
       window.localStorage.clear(); 
       window.sessionStorage.clear();
+      localStorage.removeItem("token");
       navigate("/login");
       window.location.reload();
     } catch (err) {
