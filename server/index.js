@@ -46,7 +46,7 @@ app.post("/register", (req, res) => {
         res.status(409).json({ message: "User already exists" });
       } else {
         const q =
-          "INSERT INTO luxury_store.users (`username`, `password`) VALUES (?, ?)";
+          "INSERT INTO bjyigszlcnclqmgyhmui.users (`username`, `password`) VALUES (?, ?)";
 
         db.query(q, [username, hashedPass], (err, data) => {
           if (err) {
