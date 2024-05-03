@@ -28,6 +28,10 @@ export default function Login() {
         throw new Error("Failed to login");
       }
 
+      if (response.status === 404) {
+        alert("Invalid username or password");
+      }
+
       const userInfo = await response.json();
       setUserInfo(userInfo);
 

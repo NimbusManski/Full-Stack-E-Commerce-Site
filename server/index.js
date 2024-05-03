@@ -104,14 +104,14 @@ app.post("/login", (req, res) => {
               }
             );
           } else {
-            return res.status(401).json({ error: "Invalid username or password" });
+            return res.status(404).json({ error: "Invalid username or password" });
           }
         } catch (err) {
           console.log(err);
           return res.status(500).json({ error: "Internal Server Error" });
         }
       } else {
-        return res.status(401).json({ error: "Invalid username or password" });
+        return res.status(404).json({ error: "Invalid username or password" });
       }
     });
   } catch (err) {
