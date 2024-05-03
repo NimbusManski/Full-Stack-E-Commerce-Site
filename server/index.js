@@ -72,7 +72,7 @@ app.post("/login", (req, res) => {
   }
 
   try {
-    const q = "SELECT * FROM luxury_store.users WHERE username = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.users WHERE username = ?";
     db.query(q, [username], (err, data) => {
       if (err) {
         res.status(501).json({ message: "Error creating user" });
@@ -143,7 +143,7 @@ app.get("/profile", (req, res) => {
 app.get("/best-sellers",async (req, res) => {
   try {
 
-   const q = "SELECT * FROM luxury_store.best_sellers ORDER BY RAND()"
+   const q = "SELECT * FROM bjyigszlcnclqmgyhmui.best_sellers ORDER BY RAND()"
 
    db.query(q, (err, data) => {
     if(err) {
@@ -163,7 +163,7 @@ app.get("/best-sellers",async (req, res) => {
 
 app.get("/watches", (req, res) => {
   try {
-    const q = "SELECT * FROM luxury_store.watches ORDER BY watches.id DESC";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches ORDER BY watches.id DESC";
 
     db.query(q, (err, data) => {
       if (err) {
@@ -183,7 +183,7 @@ app.get("/watch-details/:id", (req, res) => {
   try {
     const { id } = req.params;
 
-    const q = "SELECT * FROM luxury_store.watches WHERE id = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches WHERE id = ?";
 
     db.query(q, [id], (err, data) => {
       console.log(data);
@@ -203,7 +203,7 @@ app.get("/watch-details/:id", (req, res) => {
 
 app.get("/ties", (req, res) => {
   try {
-    const q = "SELECT * FROM luxury_store.ties ORDER BY ties.id DESC";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.ties ORDER BY ties.id DESC";
 
     db.query(q, (err, data) => {
       if (err) {
@@ -223,7 +223,7 @@ app.get("/tie-details/:id", (req, res) => {
   try {
     const { id } = req.params;
 
-    const q = "SELECT * FROM luxury_store.ties WHERE id = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.ties WHERE id = ?";
 
     db.query(q, [id], (err, data) => {
       console.log(data);
@@ -243,7 +243,7 @@ app.get("/tie-details/:id", (req, res) => {
 
 app.get("/belts", (req, res) => {
   try {
-    const q = "SELECT * FROM luxury_store.belts ORDER BY belts.id DESC";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.belts ORDER BY belts.id DESC";
 
     db.query(q, (err, data) => {
       if (err) {
@@ -263,7 +263,7 @@ app.get("/belt-details/:id", (req, res) => {
   try {
     const { id } = req.params;
 
-    const q = "SELECT * FROM luxury_store.belts WHERE id = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.belts WHERE id = ?";
 
     db.query(q, [id], (err, data) => {
       console.log(data);
@@ -283,7 +283,7 @@ app.get("/belt-details/:id", (req, res) => {
 
 app.get("/shoes", (req, res) => {
   try {
-    const q = "SELECT * FROM luxury_store.shoes ORDER BY shoes.id DESC";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.shoes ORDER BY shoes.id DESC";
 
     db.query(q, (err, data) => {
       if (err) {
@@ -303,7 +303,7 @@ app.get("/shoe-details/:id", (req, res) => {
   try {
     const { id } = req.params;
 
-    const q = "SELECT * FROM luxury_store.shoes WHERE id = ?";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.shoes WHERE id = ?";
 
     db.query(q, [id], (err, data) => {
       console.log(data);
@@ -401,11 +401,11 @@ app.get("/cart-items", (req, res) => {
   b.price AS belt_price,
   b.image1 AS belt_image1
 FROM
-  luxury_store.cart AS c
-  LEFT JOIN luxury_store.watches AS w ON c.item_id = w.id AND c.item_type = 'watch'
-  LEFT JOIN luxury_store.ties AS t ON c.item_id = t.id AND c.item_type = 'tie'
-  LEFT JOIN luxury_store.shoes AS s ON c.item_id = s.id AND c.item_type = 'shoe'
-  LEFT JOIN luxury_store.belts AS b ON c.item_id = b.id AND c.item_type = 'belt'
+  bjyigszlcnclqmgyhmui.cart AS c
+  LEFT JOIN bjyigszlcnclqmgyhmui.watches AS w ON c.item_id = w.id AND c.item_type = 'watch'
+  LEFT JOIN bjyigszlcnclqmgyhmui.ties AS t ON c.item_id = t.id AND c.item_type = 'tie'
+  LEFT JOIN bjyigszlcnclqmgyhmui.shoes AS s ON c.item_id = s.id AND c.item_type = 'shoe'
+  LEFT JOIN bjyigszlcnclqmgyhmui.belts AS b ON c.item_id = b.id AND c.item_type = 'belt'
 WHERE
   c.user_id = 2
   `;
@@ -429,7 +429,7 @@ app.delete("/remove-cart-item/:cartIdNum", (req, res) => {
   try {
     const{ cartIdNum }= req.body;
 
-    const q = "DELETE FROM luxury_store.cart WHERE id = ?";
+    const q = "DELETE FROM bjyigszlcnclqmgyhmui.cart WHERE id = ?";
 
     db.query(q, [cartIdNum], (err, data) => {
       if (err) {
