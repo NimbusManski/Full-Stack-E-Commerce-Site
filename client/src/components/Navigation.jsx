@@ -37,7 +37,7 @@ export default function Navigation() {
     if (Object.keys(userInfo).length === 0) {
       fetchData();
     }
-  }, []);
+  }, [setUserInfo, userInfo, navigate]);
 
 
   async function logout() {
@@ -48,11 +48,12 @@ export default function Navigation() {
       });
   
       setUserInfo({});
-      window.localStorage.clear(); 
-      window.sessionStorage.clear();
-      localStorage.removeItem("token");
       navigate("/login");
       window.location.reload();
+      window.localStorage.clear(); 
+      window.sessionStorage.clear();
+      
+      
     } catch (err) {
       console.error("Error logging out:", err);
     }

@@ -10,9 +10,9 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  useEffect(() => {
-    refreshToken(); 
-  }, []); 
+  // useEffect(() => {
+  //   refreshToken(); 
+  // }, []); 
 
   async function login(e) {
     e.preventDefault();
@@ -41,24 +41,24 @@ export default function Login() {
     }
   }
 
-  async function refreshToken() {
-    try {
-      const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/refresh-token`, {
-        method: "POST",
-        credentials: "include"
-      });
+  // async function refreshToken() {
+  //   try {
+  //     const response = await fetch(`${import.meta.env.VITE_SERVER_URL}/refresh-token`, {
+  //       method: "POST",
+  //       credentials: "include"
+  //     });
 
-      if (!response.ok) {
-        throw new Error("Failed to refresh token");
-      }
+  //     if (!response.ok) {
+  //       throw new Error("Failed to refresh token");
+  //     }
 
-      const userInfo = await response.json();
-      setUserInfo(userInfo);
+  //     const userInfo = await response.json();
+  //     setUserInfo(userInfo);
 
-    } catch (err) {
-      console.error("Error refreshing token:", err);
-    }
-  }
+  //   } catch (err) {
+  //     console.error("Error refreshing token:", err);
+  //   }
+  // }
 
   return (
     <div className="login-form-wrapper">
