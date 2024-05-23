@@ -89,7 +89,7 @@ app.post("/login", (req, res) => {
               },
               secret,
               {
-                expiresIn: 420,
+                expiresIn: "1H",
               },
               (err, token) => {
                 if (err) {
@@ -209,7 +209,7 @@ app.get("/best-sellers",async (req, res) => {
 
 app.get("/watches", (req, res) => {
   try {
-    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches ORDER BY watches.id DESC";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches ORDER BY watches.id RAND";
 
     db.query(q, (err, data) => {
       if (err) {

@@ -14,7 +14,10 @@ export default function AboutUs() {
               <Col md={6}>
                 <div className="hero-content text-white">
                   <h1>About Us</h1>
-                  <p>We are your destination for the finest luxury men's accessories.</p>
+                  <p>
+                    We are your destination for the finest luxury men's
+                    accessories.
+                  </p>
                 </div>
               </Col>
               <Col md={6}>
@@ -22,7 +25,11 @@ export default function AboutUs() {
                   <img
                     src="/images/about-us-hero-img.jpeg"
                     alt="About Us"
-                    style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
                   />
                 </div>
               </Col>
@@ -43,7 +50,10 @@ export default function AboutUs() {
                   <div className="image-description">
                     <h3>Our Trustworthiness</h3>
                     <p>
-                      With years of experience and thousands of satisfied customers, we have earned the trust of our community by consistently providing high-quality products and exceptional service.
+                      With years of experience and thousands of satisfied
+                      customers, we have earned the trust of our community by
+                      consistently providing high-quality products and
+                      exceptional service.
                     </p>
                   </div>
                 </div>
@@ -58,7 +68,10 @@ export default function AboutUs() {
                   <div className="image-description">
                     <h3>Customer Satisfaction</h3>
                     <p>
-                      Our dedication to customer satisfaction is unparalleled. We go above and beyond to ensure that every customer has a seamless shopping experience, from browsing our products to post-purchase support.
+                      Our dedication to customer satisfaction is unparalleled.
+                      We go above and beyond to ensure that every customer has a
+                      seamless shopping experience, from browsing our products
+                      to post-purchase support.
                     </p>
                   </div>
                 </div>
@@ -73,7 +86,10 @@ export default function AboutUs() {
                   <div className="image-description">
                     <h3>Our Luxury Assortment</h3>
                     <p>
-                      Explore our vast collection of luxury accessories, meticulously curated to cater to every style and preference. From classic timepieces to modern accessories, we have something for everyone.
+                      Explore our vast collection of luxury accessories,
+                      meticulously curated to cater to every style and
+                      preference. From classic timepieces to modern accessories,
+                      we have something for everyone.
                     </p>
                   </div>
                 </div>
@@ -89,7 +105,9 @@ export default function AboutUs() {
                 <div className="trust-content">
                   <h2>Why Choose Us?</h2>
                   <p>
-                    We are committed to providing the highest quality products and excellent customer service. Our store is trusted by thousands of satisfied customers worldwide.
+                    We are committed to providing the highest quality products
+                    and excellent customer service. Our store is trusted by
+                    thousands of satisfied customers worldwide.
                   </p>
                 </div>
               </Col>
@@ -130,10 +148,7 @@ export default function AboutUs() {
           <Container>
             <Row>
               <Col md={6} className="additional-section-image">
-                <img
-                  src="/images/about-us-values-img.jpeg"
-                  alt="Our Values"
-                />
+                <img src="/images/about-us-values-img.jpeg" alt="Our Values" />
               </Col>
               <Col md={6} className="additional-section-content">
                 <h2>Our Values</h2>

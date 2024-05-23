@@ -37,8 +37,8 @@ export default function Cart() {
   
     if (userInfo && userInfo.id) {
       if (success) {
-        alert("Payment complete!");
         clearCart(userInfo.id);
+        alert("Payment complete!");
       } else if (cancel) {
         alert("Payment failed");
       }
@@ -220,6 +220,7 @@ export default function Cart() {
         </Row>
       </Container>
       <div className="checkout-btn-wrapper">
+      <p>*For testing purposes, enter 4242 4242 4242 4242 as card number with any date and cvv at checkout*</p>
         <Button variant="primary checkout-btn" onClick={() => placeOrderHandler()}>
           Checkout
         </Button>
