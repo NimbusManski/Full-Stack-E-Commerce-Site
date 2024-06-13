@@ -6,8 +6,8 @@ import { UserContext } from "../components/UserContext";
 export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const { setUserInfo } = useContext(UserContext);
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("Demo");
+  const [password, setPassword] = useState("Demo");
   const navigate = useNavigate();
 
   // useEffect(() => {
@@ -86,6 +86,9 @@ export default function Login() {
         <button type="submit">Sign In</button>
         <p>
           Don't have an account? <Link to={"/register"}>Register here</Link>
+        </p>
+        <p>
+          Demoing the site? Just click sign in!
         </p>
       </Form>
     </div>
