@@ -15,8 +15,24 @@ export default function AboutUs() {
                 <div className="hero-content text-white">
                   <h1>About Us</h1>
                   <p>
-                    We are your destination for the finest luxury men's
-                    accessories.
+                    Founded in 1967, our mission has always been to provide
+                    exceptional luxury products that define sophistication and
+                    timeless elegance. For over five decades, we have dedicated
+                    ourselves to curating the finest collections of luxury
+                    items, ensuring that each piece embodies unparalleled
+                    craftsmanship and style. Customer satisfaction is at the
+                    heart of everything we do. Our commitment to excellence is
+                    reflected not only in the quality of our products but also
+                    in our unwavering focus on delivering an outstanding
+                    shopping experience. We believe that every customer deserves
+                    personalized service and attention to detail, ensuring that
+                    their journey with us is as luxurious as the items they
+                    choose. Beyond our commitment to luxury, we also believe in
+                    giving back to the community. We are proud supporters of
+                    various charitable organizations, dedicating a portion of
+                    our proceeds to causes that make a meaningful difference.
+                    Thank you for being a part of our
+                    journey
                   </p>
                 </div>
               </Col>
