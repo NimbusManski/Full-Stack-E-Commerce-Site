@@ -566,7 +566,7 @@ align-items: center;
 
 .watch-section {
   position: relative;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('../public/images/watches/section-img.jpeg');  background-size: cover;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent), url('/images/watches/section-img.jpeg');  background-size: cover;
   background-position: center;
   height: 400px; 
   display: flex;

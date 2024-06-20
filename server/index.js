@@ -209,13 +209,14 @@ app.get("/best-sellers",async (req, res) => {
 
 app.get("/watches", (req, res) => {
   try {
-    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches ORDER BY watches.id RAND";
+    const q = "SELECT * FROM bjyigszlcnclqmgyhmui.watches ORDER BY watches.id DESC";
 
     db.query(q, (err, data) => {
       if (err) {
+        
         res.json({ message: "Error fetching watches" });
       } else {
-        return res.json(data);
+        return res.status(200).json(data);
       }
 
       console.log(data);
