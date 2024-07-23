@@ -543,8 +543,8 @@ app.post("/create-checkout-session", async (req, res) => {
       payment_method_types: ["card"],
       line_items: lineItems,
       mode: "payment",
-      success_url: "http://localhost:5173/cart?success=true",
-      cancel_url: "http://localhost:5173/cart?cancel=true",
+      success_url: "https://full-stack-e-commerce-site-api.onrender.com/cart?success=true",
+      cancel_url: "https://full-stack-e-commerce-site-api.onrender.com/cart?cancel=true",
     });
 
     res.json({ sessionId: session.id });
