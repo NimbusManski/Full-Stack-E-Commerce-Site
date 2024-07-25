@@ -1,6 +1,14 @@
 
 import { Link } from "react-router-dom";
 export default function Attributes() {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  };
+
     return (
       <div className="attr-container">
         <div className="attr-section">
@@ -36,8 +44,10 @@ export default function Attributes() {
           </div>
         </div>
         <div className="button-container">
-        <button><Link to={"/about-us"}>Learn More</Link></button>
-        </div>
+        <Link to={"/about-us"} onClick={scrollToTop}>
+          <button>Learn More</button>
+        </Link>
+      </div>
       </div>
     );
   }

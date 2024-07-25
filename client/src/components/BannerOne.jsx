@@ -1,6 +1,14 @@
 import { Link } from "react-router-dom";
 
 export default function Authentic() {
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    })
+  };
+
   return (
     <div className="auth-section">
       <div className="auth-section-img">
@@ -13,7 +21,11 @@ export default function Authentic() {
           locations, global community, curated collections - both new and
           collectible pre-owned - and let’s talk luxury.
         </p>
-        <button><Link to={"/about-us"}>Learn More</Link> </button>
+        <div className="button-container">
+        <Link to={"/about-us"} onClick={scrollToTop}>
+          <button>Learn More</button>
+        </Link>
+      </div>
       </div>
     </div>
   );
